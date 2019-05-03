@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.PicInfoMapper">
+  <resultMap id="BaseResultMap" type="com.bo.PicInfo">
+    <id column="PIC_ID" jdbcType="TINYINT" property="picId" />
+    <result column="PIC_ADDRESS" jdbcType="VARCHAR" property="picAddress" />
+    <result column="PIC_GROUP_ID" jdbcType="TINYINT" property="picGroupId" />
+    <result column="PIC_UP_DATE" jdbcType="VARCHAR" property="picUpDate" />
+    <result column="PIC_UP_USER" jdbcType="TINYINT" property="picUpUser" />
+    <result column="PIC_STATE" jdbcType="VARCHAR" property="picState" />
+    <result column="PIC_SIZE" jdbcType="VARCHAR" property="picSize" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    PIC_ID, PIC_ADDRESS, PIC_GROUP_ID, PIC_UP_DATE, PIC_UP_USER, PIC_STATE, PIC_SIZE
+  </sql>
+  <select id="selectByExample" parameterType="com.bo.PicInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from PIC_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Byte" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PIC_INFO
+    where PIC_ID = #{picId,jdbcType=TINYINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Byte">
+    delete from PIC_INFO
+    where PIC_ID = #{picId,jdbcType=TINYINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.bo.PicInfoExample">
+    delete from PIC_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.bo.PicInfo">
+    insert into PIC_INFO (PIC_ID, PIC_ADDRESS, PIC_GROUP_ID, 
+      PIC_UP_DATE, PIC_UP_USER, PIC_STATE, 
+      PIC_SIZE)
+    values (#{picId,jdbcType=TINYINT}, #{picAddress,jdbcType=VARCHAR}, #{picGroupId,jdbcType=TINYINT}, 
+      #{picUpDate,jdbcType=VARCHAR}, #{picUpUser,jdbcType=TINYINT}, #{picState,jdbcType=VARCHAR}, 
+      #{picSize,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bo.PicInfo">
+    insert into PIC_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="picId != null">
+        PIC_ID,
+      </if>
+      <if test="picAddress != null">
+        PIC_ADDRESS,
+      </if>
+      <if test="picGroupId != null">
+        PIC_GROUP_ID,
+      </if>
+      <if test="picUpDate != null">
+        PIC_UP_DATE,
+      </if>
+      <if test="picUpUser != null">
+        PIC_UP_USER,
+      </if>
+      <if test="picState != null">
+        PIC_STATE,
+      </if>
+      <if test="picSize != null">
+        PIC_SIZE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="picId != null">
+        #{picId,jdbcType=TINYINT},
+      </if>
+      <if test="picAddress != null">
+        #{picAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="picGroupId != null">
+        #{picGroupId,jdbcType=TINYINT},
+      </if>
+      <if test="picUpDate != null">
+        #{picUpDate,jdbcType=VARCHAR},
+      </if>
+      <if test="picUpUser != null">
+        #{picUpUser,jdbcType=TINYINT},
+      </if>
+      <if test="picState != null">
+        #{picState,jdbcType=VARCHAR},
+      </if>
+      <if test="picSize != null">
+        #{picSize,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.bo.PicInfoExample" resultType="java.lang.Long">
+    select count(*) from PIC_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update PIC_INFO
+    <set>
+      <if test="record.picId != null">
+        PIC_ID = #{record.picId,jdbcType=TINYINT},
+      </if>
+      <if test="record.picAddress != null">
+        PIC_ADDRESS = #{record.picAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.picGroupId != null">
+        PIC_GROUP_ID = #{record.picGroupId,jdbcType=TINYINT},
+      </if>
+      <if test="record.picUpDate != null">
+        PIC_UP_DATE = #{record.picUpDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.picUpUser != null">
+        PIC_UP_USER = #{record.picUpUser,jdbcType=TINYINT},
+      </if>
+      <if test="record.picState != null">
+        PIC_STATE = #{record.picState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.picSize != null">
+        PIC_SIZE = #{record.picSize,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update PIC_INFO
+    set PIC_ID = #{record.picId,jdbcType=TINYINT},
+      PIC_ADDRESS = #{record.picAddress,jdbcType=VARCHAR},
+      PIC_GROUP_ID = #{record.picGroupId,jdbcType=TINYINT},
+      PIC_UP_DATE = #{record.picUpDate,jdbcType=VARCHAR},
+      PIC_UP_USER = #{record.picUpUser,jdbcType=TINYINT},
+      PIC_STATE = #{record.picState,jdbcType=VARCHAR},
+      PIC_SIZE = #{record.picSize,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bo.PicInfo">
+    update PIC_INFO
+    <set>
+      <if test="picAddress != null">
+        PIC_ADDRESS = #{picAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="picGroupId != null">
+        PIC_GROUP_ID = #{picGroupId,jdbcType=TINYINT},
+      </if>
+      <if test="picUpDate != null">
+        PIC_UP_DATE = #{picUpDate,jdbcType=VARCHAR},
+      </if>
+      <if test="picUpUser != null">
+        PIC_UP_USER = #{picUpUser,jdbcType=TINYINT},
+      </if>
+      <if test="picState != null">
+        PIC_STATE = #{picState,jdbcType=VARCHAR},
+      </if>
+      <if test="picSize != null">
+        PIC_SIZE = #{picSize,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PIC_ID = #{picId,jdbcType=TINYINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bo.PicInfo">
+    update PIC_INFO
+    set PIC_ADDRESS = #{picAddress,jdbcType=VARCHAR},
+      PIC_GROUP_ID = #{picGroupId,jdbcType=TINYINT},
+      PIC_UP_DATE = #{picUpDate,jdbcType=VARCHAR},
+      PIC_UP_USER = #{picUpUser,jdbcType=TINYINT},
+      PIC_STATE = #{picState,jdbcType=VARCHAR},
+      PIC_SIZE = #{picSize,jdbcType=VARCHAR}
+    where PIC_ID = #{picId,jdbcType=TINYINT}
+  </update>
+</mapper>

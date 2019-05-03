@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 -->
+<mapper namespace="com.dao.DemoMapper">
+    <!-- statement，内容：sql语句。id：唯一标识，随便写，在同一个命名空间下保持唯一
+       resultType：sql语句查询结果集的封装类型,tb_user即为数据库中的表
+     -->
+    <!--<select id="queryUserById" resultType="com.zpc.mybatis.pojo.User">-->
+    <!--select * from tb_user where id = #{id}-->
+    <!--</select>-->
+
+    <!--使用别名-->
+    <select id="queryUserById" resultType="com.bo.Student">
+        select
+        d.id as id,
+        d.name as name,
+        d.phone as phone
+        from
+        demo d
+        where d.id = #{id};
+    </select>
+
+    <select id="queryUserAll" resultType="com.bo.Student">
+        select * from demo;
+    </select>
+
+    <!--插入数据-->
+    <insert id="insertUser" parameterType="com.bo.Student">
+        INSERT INTO demo (
+        name,
+        phone
+        )
+        VALUES
+        (
+        #{name},
+        #{phone}
+        );
+    </insert>
+
+    <update id="updateUser" parameterType="com.bo.Student">
+        UPDATE demo
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name !=null">name = #{name},</if>
+            <if test="phone !=null">phone = #{phone},</if>
+        </trim>
+        WHERE
+        (id = #{id});
+    </update>
+
+    <delete id="deleteUser">
+        delete from tb_user where id=#{id}
+    </delete>
+</mapper>

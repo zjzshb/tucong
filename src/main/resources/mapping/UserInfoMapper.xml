@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.bo.UserInfo">
+    <id column="USER_ID" jdbcType="INTEGER" property="userId" />
+    <result column="U_ADDRESS" jdbcType="VARCHAR" property="uAddress" />
+    <result column="U_DIS" jdbcType="VARCHAR" property="uDis" />
+    <result column="U_BG" jdbcType="VARCHAR" property="uBg" />
+    <result column="U_TX" jdbcType="VARCHAR" property="uTx" />
+    <result column="U_SEX" jdbcType="VARCHAR" property="uSex" />
+    <result column="U_NICKNAME" jdbcType="VARCHAR" property="uNickname" />
+    <result column="U_CREATETIME" jdbcType="VARCHAR" property="uCreatetime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    USER_ID, U_ADDRESS, U_DIS, U_BG, U_TX, U_SEX, U_NICKNAME, U_CREATETIME
+  </sql>
+  <select id="selectByExample" parameterType="com.bo.UserInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from USER_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from USER_INFO
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from USER_INFO
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.bo.UserInfoExample">
+    delete from USER_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.bo.UserInfo">
+    insert into USER_INFO (USER_ID, U_ADDRESS, U_DIS, 
+      U_BG, U_TX, U_SEX, U_NICKNAME, 
+      U_CREATETIME)
+    values (#{userId,jdbcType=INTEGER}, #{uAddress,jdbcType=VARCHAR}, #{uDis,jdbcType=VARCHAR}, 
+      #{uBg,jdbcType=VARCHAR}, #{uTx,jdbcType=VARCHAR}, #{uSex,jdbcType=VARCHAR}, #{uNickname,jdbcType=VARCHAR}, 
+      #{uCreatetime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bo.UserInfo">
+    insert into USER_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="uAddress != null">
+        U_ADDRESS,
+      </if>
+      <if test="uDis != null">
+        U_DIS,
+      </if>
+      <if test="uBg != null">
+        U_BG,
+      </if>
+      <if test="uTx != null">
+        U_TX,
+      </if>
+      <if test="uSex != null">
+        U_SEX,
+      </if>
+      <if test="uNickname != null">
+        U_NICKNAME,
+      </if>
+      <if test="uCreatetime != null">
+        U_CREATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="uAddress != null">
+        #{uAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="uDis != null">
+        #{uDis,jdbcType=VARCHAR},
+      </if>
+      <if test="uBg != null">
+        #{uBg,jdbcType=VARCHAR},
+      </if>
+      <if test="uTx != null">
+        #{uTx,jdbcType=VARCHAR},
+      </if>
+      <if test="uSex != null">
+        #{uSex,jdbcType=VARCHAR},
+      </if>
+      <if test="uNickname != null">
+        #{uNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="uCreatetime != null">
+        #{uCreatetime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.bo.UserInfoExample" resultType="java.lang.Long">
+    select count(*) from USER_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update USER_INFO
+    <set>
+      <if test="record.userId != null">
+        USER_ID = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.uAddress != null">
+        U_ADDRESS = #{record.uAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uDis != null">
+        U_DIS = #{record.uDis,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uBg != null">
+        U_BG = #{record.uBg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uTx != null">
+        U_TX = #{record.uTx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uSex != null">
+        U_SEX = #{record.uSex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uNickname != null">
+        U_NICKNAME = #{record.uNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uCreatetime != null">
+        U_CREATETIME = #{record.uCreatetime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update USER_INFO
+    set USER_ID = #{record.userId,jdbcType=INTEGER},
+      U_ADDRESS = #{record.uAddress,jdbcType=VARCHAR},
+      U_DIS = #{record.uDis,jdbcType=VARCHAR},
+      U_BG = #{record.uBg,jdbcType=VARCHAR},
+      U_TX = #{record.uTx,jdbcType=VARCHAR},
+      U_SEX = #{record.uSex,jdbcType=VARCHAR},
+      U_NICKNAME = #{record.uNickname,jdbcType=VARCHAR},
+      U_CREATETIME = #{record.uCreatetime,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bo.UserInfo">
+    update USER_INFO
+    <set>
+      <if test="uAddress != null">
+        U_ADDRESS = #{uAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="uDis != null">
+        U_DIS = #{uDis,jdbcType=VARCHAR},
+      </if>
+      <if test="uBg != null">
+        U_BG = #{uBg,jdbcType=VARCHAR},
+      </if>
+      <if test="uTx != null">
+        U_TX = #{uTx,jdbcType=VARCHAR},
+      </if>
+      <if test="uSex != null">
+        U_SEX = #{uSex,jdbcType=VARCHAR},
+      </if>
+      <if test="uNickname != null">
+        U_NICKNAME = #{uNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="uCreatetime != null">
+        U_CREATETIME = #{uCreatetime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bo.UserInfo">
+    update USER_INFO
+    set U_ADDRESS = #{uAddress,jdbcType=VARCHAR},
+      U_DIS = #{uDis,jdbcType=VARCHAR},
+      U_BG = #{uBg,jdbcType=VARCHAR},
+      U_TX = #{uTx,jdbcType=VARCHAR},
+      U_SEX = #{uSex,jdbcType=VARCHAR},
+      U_NICKNAME = #{uNickname,jdbcType=VARCHAR},
+      U_CREATETIME = #{uCreatetime,jdbcType=VARCHAR}
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

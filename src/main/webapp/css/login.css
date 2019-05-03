@@ -1,0 +1,99 @@
+@keyframes qie {
+    0%,25%{ background: url('../img/pic-0.jpg') 50% 50%;}
+    30%,65%{background: url('../img/pic-2.jpg') 50% 50%;}
+    70%,100%{background: url('../img/pic-1.jpg') 50% 50%;}
+}
+@font-face {
+    font-family: "mini";
+    src: url("mini.woff") format("woff"),
+    url("mini.woff") format("woff"),
+    url("mini.ttf") format("truetype"),
+    url("mini.eot") format("embedded-opentype"),
+    url("mini.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+#top div{
+    position: absolute;
+    right: 0;top:0;padding:0  17px;
+}
+#top{
+    padding-left:15px ;position: relative;//box-shadow:0 1px 1px rgba(0, 0, 0, 0.4);
+    display: none;background:linear-gradient(rgba(0,0,0,0.5),transparent );height:50px;
+}
+#top span{
+    font-family: 'mini';
+    text-align: left; font-size: 30px ;
+    font-weight:500;color: white;line-height:50px;
+}
+#top div a{
+    font-size: 14px;line-height: 50px;border-right: 1px solid #fff8e7;padding: 0 8px;color: white;letter-spacing: 2px;
+    text-decoration: none;
+}
+#top div a:last-child{
+   border-right: 0 solid blue;
+}
+#top div a:hover{
+     box-shadow: 3px 3px 0 #ffab20;text-decoration: none;border-right: 0px solid blue;
+ }
+#mid{
+   //position: absolute;
+    float: left;display: none;
+    width:320px;
+    height: 370px;
+    border: 1px outset #7eccce;box-shadow:10px 12px 1px #63a4aa;background-color: white;
+}
+#mid p{
+    font-size: 35px ;
+    font-weight: 300;color: #282fa4;text-align: center;
+    letter-spacing: 15px;padding-bottom: 0px;
+}
+body,html{
+    margin: 0;padding: 0;border: 0px solid red;
+    position: relative;
+   background-size: cover;
+   height: 100%;width: 100%;
+   animation: qie 15s linear infinite ;
+}
+label{
+    font-size: 20px;
+    color: #2f6185;
+    padding-bottom: 10px;display: block;
+}
+#log_p{
+    margin: 0 auto;
+    width: 251px;
+}
+#log_p a{
+    text-decoration: none;display: block;float: right;margin-top: 10px;font-size: 14px;color: #186ac6;
+}
+input{
+    width: 250px;height: 30px;border: 0 ;font-size: 18px;color: blue;outline:none;
+    border-bottom: 1px solid royalblue;
+}
+input:last-child{
+    background-color: #186ac6;color: #f9f6ff;cursor: pointer;font-size: 18px;height: 35px;margin-top: 25px;
+    width: 253px;line-height: 20px;
+}
+input:last-child:hover{
+    background-color: #2d42cd;color: white;
+}
+#left{
+    height: 350px;width: 500px;border: 0px solid red;top:150px;
+    //position:absolute ;right: 50%;
+    //background: url("../img/ice3.jpg") no-repeat 50% 50%; float: left;
+    //background-position: 20% 70%;
+}
+
+footer{
+    position: fixed;bottom: 1px;width: 100%;margin-top: 900px;background-color: rgba(131, 205, 208, 0);height: 25px;
+    display: none;color: rgba(255, 0, 0, 0.62);
+}
+footer span{
+   font-size: 14px;text-align: center;display: block; width: 400px;line-height: 25px;
+    margin:0 auto;
+}
+#mid_all{
+  margin: 140px auto 0 auto;height: 380px;width:840px;//background: rgb(255, 255, 255);overflow: hidden;
+    padding: 25px 0 20px 0;//display: none;
+}

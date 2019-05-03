@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script typet="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vuedome.js"></script>
+</head>
+<body>
+
+<div id = "app">
+    <div v-for = "(value,key,index) in userList">
+        {{index}}
+        用户名：{{value.username}}
+        <br>
+        密码：{{value.pwd}}
+    </div>
+</div>
+</body>
+</html>
