@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 /**
  * Created by John on 2019/4/13.
  */
-@Service
 public interface AccountService {
 
     public int   checkAccount(Account account);

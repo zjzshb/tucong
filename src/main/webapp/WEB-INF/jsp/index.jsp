@@ -36,7 +36,100 @@
 		<a class="photolabel" id="allphoto">全部</a>
 
 	</div>
-	<div id="showphoto"></div>
+	<div id="showphoto">
+
+		<div class="photo" id="1">
+			<img src="http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg" alt=\"失败\"/>
+			<div class="photomes" id="2">
+				<span class="photoUserName"> userName</span>
+				<span> 时间：time</span>
+				<span>赞：1</span>
+				<span>评论:1</span>
+			</div>
+		</div>
+		<div class="photo" id="1">
+			<img src="http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg" alt=\"失败\"/>
+			<div class="photomes" id="2">
+				<span class="photoUserName"> userName</span>
+				<span> 时间：time</span>
+				<span>赞：1</span>
+				<span>评论:1</span>
+			</div>
+		</div>
+		<div class="photo" id="1">
+			<img src="http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg" alt=\"失败\"/>
+			<div class="photomes" id="2">
+				<span class="photoUserName"> userName</span>
+				<span> 时间：time</span>
+				<span>赞：1</span>
+				<span>评论:1</span>
+			</div>
+		</div>
+		<div class="photo" id="1">
+			<img src="http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg" alt=\"失败\"/>
+			<div class="photomes" id="2">
+				<span class="photoUserName"> userName</span>
+				<span> 时间：time</span>
+				<span>赞：1</span>
+				<span>评论:1</span>
+			</div>
+		</div>
+		<div class="photo" id="1">
+			<img src="http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg" alt=\"失败\"/>
+			<div class="photomes" id="2">
+				<span class="photoUserName"> userName</span>
+				<span> 时间：time</span>
+				<span>赞：1</span>
+				<span>评论:1</span>
+			</div>
+		</div>
+		<div class="photo" id="1">
+			<img src="http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg" alt=\"失败\"/>
+			<div class="photomes" id="2">
+				<span class="photoUserName"> userName</span>
+				<span> 时间：time</span>
+				<span>赞：1</span>
+				<span>评论:1</span>
+			</div>
+		</div>
+		<div class="photo" id="1">
+			<img src="http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg" alt=\"失败\"/>
+			<div class="photomes" id="2">
+				<span class="photoUserName"> userName</span>
+				<span> 时间：time</span>
+				<span>赞：1</span>
+				<span>评论:1</span>
+			</div>
+		</div>
+		<div class="photo" id="1">
+			<img src="http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg" alt=\"失败\"/>
+			<div class="photomes" id="2">
+				<span class="photoUserName"> userName</span>
+				<span> 时间：time</span>
+				<span>赞：1</span>
+				<span>评论:1</span>
+			</div>
+		</div>
+		<div class="photo" id="1">
+			<img src="http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg" alt=\"失败\"/>
+			<div class="photomes" id="2">
+				<span class="photoUserName"> userName</span>
+				<span> 时间：time</span>
+				<span>赞：1</span>
+				<span>评论:1</span>
+			</div>
+		</div>
+		<div class="photo" id="1">
+			<img src="http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg" alt=\"失败\"/>
+			<div class="photomes" id="2">
+				<span class="photoUserName"> userName</span>
+				<span> 时间：time</span>
+				<span>赞：1</span>
+				<span>评论:1</span>
+			</div>
+		</div>
+
+	</div>
 	<div id="last">
 		<div id="getmorephoto">查看更多</div>
 	</div>

@@ -30,7 +30,7 @@
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">上传时间</label>
+        <label class="layui-form-label">创建时间</label>
         <div class="layui-input-inline" style="width: 100px;">
             <input type="text" class="layui-input" id="fromTime" placeholder="起始时间" name="fromTime">
         </div>
@@ -39,19 +39,7 @@
             <input type="text" class="layui-input" id="toTime" placeholder="结束时间" name="toTime">
         </div>
     </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">标签名</label>
-        <div class="layui-input-inline">
-            <select name="tagId">
-                <option value=""></option>
-                <option value="0">北京</option>
-                <option value="1">上海</option>
-                <option value="2">广州</option>
-                <option value="3">深圳</option>
-                <option value="4">杭州</option>
-            </select>
-        </div>
-    </div>
+
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn" lay-submit lay-filter="submitThis">立即提交</button>
@@ -92,18 +80,33 @@
                     sort: true,
                     totalRowText: 'id',
                     hide: true
-                }, {field: 'username', title: '上传用户', width: 120, edit: 'text'},
+                },
                 {
-                    field: 'nickname',
+                    field: 'userName',
+                    title: '用户名',
+                    width: 120,
+                    edit: 'text'
+                },
+                {
+                    field: 'nickName',
                     title: '用户昵称',
                     width: 120,
                     edit: 'text'
-                }, {
-                    field: 'email', title: '上传时间', width: 150, edit: 'text', templet: function (res) {
-                        return '<em>' + res.email + '</em>'
-                    }
-                }, {field: 'experience', title: '标签', width: 80, sort: true, totalRow: true}, {
-                    fixed: 'right',
+                },
+                {
+                    field: 'date',
+                    title: '创建时间',
+                    width: 120,
+                    edit: 'text'
+                },
+                {
+                    field: '姓名',
+                    title: '标签',
+                    width: 120,
+                    edit: 'text'
+                },
+                {
+                    fixed: '性别',
                     title: '操作',
                     toolbar: '#barDemo',
                     width: 150
@@ -127,9 +130,9 @@
     });
     layui.use(['form', 'layedit', 'laydate'], function () {
         var form = layui.form
-            , layer = layui.layer
-            , layedit = layui.layedit
-            , laydate = layui.laydate;
+                , layer = layui.layer
+                , layedit = layui.layedit
+                , laydate = layui.laydate;
 
         //日期
         laydate.render({

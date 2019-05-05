@@ -28,4 +28,8 @@ public class PageController {
     public String goUpLoad(){
         return "photoupload";
     }
+    @RequestMapping("showphoto")
+    public String goShowPhoto(){
+        return "showphoto";
+    }
 }

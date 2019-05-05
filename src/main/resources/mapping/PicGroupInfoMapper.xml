@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.PicGroupInfoMapper">
   <resultMap id="BaseResultMap" type="com.bo.PicGroupInfo">
-    <id column="PIC_GROUP_ID" jdbcType="TINYINT" property="picGroupId" />
+    <id column="PIC_GROUP_ID" jdbcType="INTEGER" property="picGroupId" />
     <result column="PIC_DESCRIBE" jdbcType="VARCHAR" property="picDescribe" />
     <result column="PIC_UP_DATE" jdbcType="VARCHAR" property="picUpDate" />
-    <result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="USER_ID" jdbcType="INTEGER" property="userId" />
     <result column="PIC_GROUP_STATE" jdbcType="CHAR" property="picGroupState" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -84,15 +84,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Byte" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from PIC_GROUP_INFO
-    where PIC_GROUP_ID = #{picGroupId,jdbcType=TINYINT}
+    where PIC_GROUP_ID = #{picGroupId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Byte">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from PIC_GROUP_INFO
-    where PIC_GROUP_ID = #{picGroupId,jdbcType=TINYINT}
+    where PIC_GROUP_ID = #{picGroupId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.bo.PicGroupInfoExample">
     delete from PIC_GROUP_INFO
@@ -100,11 +100,11 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.bo.PicGroupInfo">
+  <insert id="insert" parameterType="com.bo.PicGroupInfo"  useGeneratedKeys="true" keyProperty="picGroupId">
     insert into PIC_GROUP_INFO (PIC_GROUP_ID, PIC_DESCRIBE, PIC_UP_DATE, 
       USER_ID, PIC_GROUP_STATE)
-    values (#{picGroupId,jdbcType=TINYINT}, #{picDescribe,jdbcType=VARCHAR}, #{picUpDate,jdbcType=VARCHAR}, 
-      #{userId,jdbcType=VARCHAR}, #{picGroupState,jdbcType=CHAR})
+    values (#{picGroupId,jdbcType=INTEGER}, #{picDescribe,jdbcType=VARCHAR}, #{picUpDate,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER}, #{picGroupState,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.bo.PicGroupInfo">
     insert into PIC_GROUP_INFO
@@ -127,7 +127,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="picGroupId != null">
-        #{picGroupId,jdbcType=TINYINT},
+        #{picGroupId,jdbcType=INTEGER},
       </if>
       <if test="picDescribe != null">
         #{picDescribe,jdbcType=VARCHAR},
@@ -136,7 +136,7 @@
         #{picUpDate,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
-        #{userId,jdbcType=VARCHAR},
+        #{userId,jdbcType=INTEGER},
       </if>
       <if test="picGroupState != null">
         #{picGroupState,jdbcType=CHAR},
@@ -153,7 +153,7 @@
     update PIC_GROUP_INFO
     <set>
       <if test="record.picGroupId != null">
-        PIC_GROUP_ID = #{record.picGroupId,jdbcType=TINYINT},
+        PIC_GROUP_ID = #{record.picGroupId,jdbcType=INTEGER},
       </if>
       <if test="record.picDescribe != null">
         PIC_DESCRIBE = #{record.picDescribe,jdbcType=VARCHAR},
@@ -162,7 +162,7 @@
         PIC_UP_DATE = #{record.picUpDate,jdbcType=VARCHAR},
       </if>
       <if test="record.userId != null">
-        USER_ID = #{record.userId,jdbcType=VARCHAR},
+        USER_ID = #{record.userId,jdbcType=INTEGER},
       </if>
       <if test="record.picGroupState != null">
         PIC_GROUP_STATE = #{record.picGroupState,jdbcType=CHAR},
@@ -174,10 +174,10 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update PIC_GROUP_INFO
-    set PIC_GROUP_ID = #{record.picGroupId,jdbcType=TINYINT},
+    set PIC_GROUP_ID = #{record.picGroupId,jdbcType=INTEGER},
       PIC_DESCRIBE = #{record.picDescribe,jdbcType=VARCHAR},
       PIC_UP_DATE = #{record.picUpDate,jdbcType=VARCHAR},
-      USER_ID = #{record.userId,jdbcType=VARCHAR},
+      USER_ID = #{record.userId,jdbcType=INTEGER},
       PIC_GROUP_STATE = #{record.picGroupState,jdbcType=CHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -193,20 +193,20 @@
         PIC_UP_DATE = #{picUpDate,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
-        USER_ID = #{userId,jdbcType=VARCHAR},
+        USER_ID = #{userId,jdbcType=INTEGER},
       </if>
       <if test="picGroupState != null">
         PIC_GROUP_STATE = #{picGroupState,jdbcType=CHAR},
       </if>
     </set>
-    where PIC_GROUP_ID = #{picGroupId,jdbcType=TINYINT}
+    where PIC_GROUP_ID = #{picGroupId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.bo.PicGroupInfo">
     update PIC_GROUP_INFO
     set PIC_DESCRIBE = #{picDescribe,jdbcType=VARCHAR},
       PIC_UP_DATE = #{picUpDate,jdbcType=VARCHAR},
-      USER_ID = #{userId,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=INTEGER},
       PIC_GROUP_STATE = #{picGroupState,jdbcType=CHAR}
-    where PIC_GROUP_ID = #{picGroupId,jdbcType=TINYINT}
+    where PIC_GROUP_ID = #{picGroupId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -114,52 +114,52 @@ public class PicInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andPicIdEqualTo(Byte value) {
+        public Criteria andPicIdEqualTo(Integer value) {
             addCriterion("PIC_ID =", value, "picId");
             return (Criteria) this;
         }
 
-        public Criteria andPicIdNotEqualTo(Byte value) {
+        public Criteria andPicIdNotEqualTo(Integer value) {
             addCriterion("PIC_ID <>", value, "picId");
             return (Criteria) this;
         }
 
-        public Criteria andPicIdGreaterThan(Byte value) {
+        public Criteria andPicIdGreaterThan(Integer value) {
             addCriterion("PIC_ID >", value, "picId");
             return (Criteria) this;
         }
 
-        public Criteria andPicIdGreaterThanOrEqualTo(Byte value) {
+        public Criteria andPicIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("PIC_ID >=", value, "picId");
             return (Criteria) this;
         }
 
-        public Criteria andPicIdLessThan(Byte value) {
+        public Criteria andPicIdLessThan(Integer value) {
             addCriterion("PIC_ID <", value, "picId");
             return (Criteria) this;
         }
 
-        public Criteria andPicIdLessThanOrEqualTo(Byte value) {
+        public Criteria andPicIdLessThanOrEqualTo(Integer value) {
             addCriterion("PIC_ID <=", value, "picId");
             return (Criteria) this;
         }
 
-        public Criteria andPicIdIn(List<Byte> values) {
+        public Criteria andPicIdIn(List<Integer> values) {
             addCriterion("PIC_ID in", values, "picId");
             return (Criteria) this;
         }
 
-        public Criteria andPicIdNotIn(List<Byte> values) {
+        public Criteria andPicIdNotIn(List<Integer> values) {
             addCriterion("PIC_ID not in", values, "picId");
             return (Criteria) this;
         }
 
-        public Criteria andPicIdBetween(Byte value1, Byte value2) {
+        public Criteria andPicIdBetween(Integer value1, Integer value2) {
             addCriterion("PIC_ID between", value1, value2, "picId");
             return (Criteria) this;
         }
 
-        public Criteria andPicIdNotBetween(Byte value1, Byte value2) {
+        public Criteria andPicIdNotBetween(Integer value1, Integer value2) {
             addCriterion("PIC_ID not between", value1, value2, "picId");
             return (Criteria) this;
         }
@@ -244,52 +244,52 @@ public class PicInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupIdEqualTo(Byte value) {
+        public Criteria andPicGroupIdEqualTo(Integer value) {
             addCriterion("PIC_GROUP_ID =", value, "picGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupIdNotEqualTo(Byte value) {
+        public Criteria andPicGroupIdNotEqualTo(Integer value) {
             addCriterion("PIC_GROUP_ID <>", value, "picGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupIdGreaterThan(Byte value) {
+        public Criteria andPicGroupIdGreaterThan(Integer value) {
             addCriterion("PIC_GROUP_ID >", value, "picGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupIdGreaterThanOrEqualTo(Byte value) {
+        public Criteria andPicGroupIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("PIC_GROUP_ID >=", value, "picGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupIdLessThan(Byte value) {
+        public Criteria andPicGroupIdLessThan(Integer value) {
             addCriterion("PIC_GROUP_ID <", value, "picGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupIdLessThanOrEqualTo(Byte value) {
+        public Criteria andPicGroupIdLessThanOrEqualTo(Integer value) {
             addCriterion("PIC_GROUP_ID <=", value, "picGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupIdIn(List<Byte> values) {
+        public Criteria andPicGroupIdIn(List<Integer> values) {
             addCriterion("PIC_GROUP_ID in", values, "picGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupIdNotIn(List<Byte> values) {
+        public Criteria andPicGroupIdNotIn(List<Integer> values) {
             addCriterion("PIC_GROUP_ID not in", values, "picGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupIdBetween(Byte value1, Byte value2) {
+        public Criteria andPicGroupIdBetween(Integer value1, Integer value2) {
             addCriterion("PIC_GROUP_ID between", value1, value2, "picGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupIdNotBetween(Byte value1, Byte value2) {
+        public Criteria andPicGroupIdNotBetween(Integer value1, Integer value2) {
             addCriterion("PIC_GROUP_ID not between", value1, value2, "picGroupId");
             return (Criteria) this;
         }
@@ -374,52 +374,52 @@ public class PicInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andPicUpUserEqualTo(Byte value) {
+        public Criteria andPicUpUserEqualTo(Integer value) {
             addCriterion("PIC_UP_USER =", value, "picUpUser");
             return (Criteria) this;
         }
 
-        public Criteria andPicUpUserNotEqualTo(Byte value) {
+        public Criteria andPicUpUserNotEqualTo(Integer value) {
             addCriterion("PIC_UP_USER <>", value, "picUpUser");
             return (Criteria) this;
         }
 
-        public Criteria andPicUpUserGreaterThan(Byte value) {
+        public Criteria andPicUpUserGreaterThan(Integer value) {
             addCriterion("PIC_UP_USER >", value, "picUpUser");
             return (Criteria) this;
         }
 
-        public Criteria andPicUpUserGreaterThanOrEqualTo(Byte value) {
+        public Criteria andPicUpUserGreaterThanOrEqualTo(Integer value) {
             addCriterion("PIC_UP_USER >=", value, "picUpUser");
             return (Criteria) this;
         }
 
-        public Criteria andPicUpUserLessThan(Byte value) {
+        public Criteria andPicUpUserLessThan(Integer value) {
             addCriterion("PIC_UP_USER <", value, "picUpUser");
             return (Criteria) this;
         }
 
-        public Criteria andPicUpUserLessThanOrEqualTo(Byte value) {
+        public Criteria andPicUpUserLessThanOrEqualTo(Integer value) {
             addCriterion("PIC_UP_USER <=", value, "picUpUser");
             return (Criteria) this;
         }
 
-        public Criteria andPicUpUserIn(List<Byte> values) {
+        public Criteria andPicUpUserIn(List<Integer> values) {
             addCriterion("PIC_UP_USER in", values, "picUpUser");
             return (Criteria) this;
         }
 
-        public Criteria andPicUpUserNotIn(List<Byte> values) {
+        public Criteria andPicUpUserNotIn(List<Integer> values) {
             addCriterion("PIC_UP_USER not in", values, "picUpUser");
             return (Criteria) this;
         }
 
-        public Criteria andPicUpUserBetween(Byte value1, Byte value2) {
+        public Criteria andPicUpUserBetween(Integer value1, Integer value2) {
             addCriterion("PIC_UP_USER between", value1, value2, "picUpUser");
             return (Criteria) this;
         }
 
-        public Criteria andPicUpUserNotBetween(Byte value1, Byte value2) {
+        public Criteria andPicUpUserNotBetween(Integer value1, Integer value2) {
             addCriterion("PIC_UP_USER not between", value1, value2, "picUpUser");
             return (Criteria) this;
         }

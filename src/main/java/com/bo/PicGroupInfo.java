@@ -1,21 +1,21 @@
 package com.bo;
 
 public class PicGroupInfo {
-    private Byte picGroupId;
+    private Integer picGroupId;
 
     private String picDescribe;
 
     private String picUpDate;
 
-    private String userId;
+    private Integer userId;
 
     private String picGroupState;
 
-    public Byte getPicGroupId() {
+    public Integer getPicGroupId() {
         return picGroupId;
     }
 
-    public void setPicGroupId(Byte picGroupId) {
+    public void setPicGroupId(Integer picGroupId) {
         this.picGroupId = picGroupId;
     }
 
@@ -35,11 +35,11 @@ public class PicGroupInfo {
         this.picUpDate = picUpDate;
     }
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

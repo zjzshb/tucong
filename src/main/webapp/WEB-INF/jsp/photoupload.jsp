@@ -23,7 +23,10 @@
 		<div class="artleft">
 			
 			<div class="files">
-				<div id="showphoto"></div>
+				<div id="showphoto">
+
+				</div>
+
 				<form class="file" id="uploadForm"  method="post"  enctype="multipart/form-data">
 					<div class="file-box">
 						<img src="img/fileupPage/crossXX.png">
@@ -45,7 +48,7 @@
 			<label> <input class="title" type="text" name="title">
 			</label>
 			<div class="phtotDes">作品描述</div>
-			<label> <textarea class="describe" name="describle"></textarea>
+			<label> <textarea class="describe" name="describle" id = "picDescribe"></textarea>
 			</label>
 			<div class="photoLabel">
 				标签（<a>输入标签内容回车即可添加标签</a>） <a>0</a>/10
@@ -126,7 +129,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="submit">发布</div>
+		<div class="submit" id = "publishPic">发布</div>
 		</aside>
 	
 	</article>

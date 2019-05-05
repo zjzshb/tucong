@@ -41,9 +41,11 @@
 		</div>
 		<footer>
 		<div class="scroll">
-			<div class="cell"
-				style="background: url('${pageContext.request.contextPath}/${photoAddress }') center/cover;"></div>
-
+			<div class="cell" style="background: url('http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg') center/cover;"></div>
+			<div class="cell" style="background: url('http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg') center/cover;"></div>
+			<div class="cell" style="background: url('http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg') center/cover;"></div>
+			<div class="cell" style="background: url('http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg') center/cover;"></div>
+			<div class="cell" style="background: url('http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg') center/cover;"></div>
 		</div>
 		<div class="jumppre" title="上一组"></div>
 		<div class="jumpnext" title="下一组"></div>
