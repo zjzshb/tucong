@@ -11,6 +11,8 @@ public class PicGroupInfo {
 
     private String picGroupState;
 
+    private String picTitle;
+
     public Integer getPicGroupId() {
         return picGroupId;
     }
@@ -49,5 +51,13 @@ public class PicGroupInfo {
 
     public void setPicGroupState(String picGroupState) {
         this.picGroupState = picGroupState;
+    }
+
+    public String getPicTitle() {
+        return picTitle;
+    }
+
+    public void setPicTitle(String picTitle) {
+        this.picTitle = picTitle;
     }
 }

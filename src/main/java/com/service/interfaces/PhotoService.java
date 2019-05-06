@@ -12,6 +12,6 @@ public interface PhotoService {
 
     public int saveTempPic (PicInfo picInfo) throws Exception;
 
-    public void changePicState(String[] ids,int userId,String picDescribe) throws Exception;
+    public void changePicState(String[] ids,int userId,String picDescribe,String picLabel,String picTitle) throws Exception;
 
 }

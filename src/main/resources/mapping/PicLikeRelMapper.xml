@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dao.PicGroupInfoMapper">
-  <resultMap id="BaseResultMap" type="com.bo.PicGroupInfo">
-    <id column="PIC_GROUP_ID" jdbcType="INTEGER" property="picGroupId" />
-    <result column="PIC_DESCRIBE" jdbcType="VARCHAR" property="picDescribe" />
-    <result column="PIC_UP_DATE" jdbcType="VARCHAR" property="picUpDate" />
+<mapper namespace="com.dao.PicLikeRelMapper">
+  <resultMap id="BaseResultMap" type="com.bo.PicLikeRel">
+    <id column="PIC_ID" jdbcType="INTEGER" property="picId" />
     <result column="USER_ID" jdbcType="INTEGER" property="userId" />
-    <result column="PIC_GROUP_STATE" jdbcType="VARCHAR" property="picGroupState" />
-    <result column="PIC_TITLE" jdbcType="VARCHAR" property="picTitle" />
+    <result column="DATE" jdbcType="VARCHAR" property="date" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,16 +65,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    PIC_GROUP_ID, PIC_DESCRIBE, PIC_UP_DATE, USER_ID, PIC_GROUP_STATE, PIC_TITLE
+    PIC_ID, USER_ID, DATE
   </sql>
-  <select id="selectByExample" parameterType="com.bo.PicGroupInfoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.bo.PicLikeRelExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from PIC_GROUP_INFO
+    from PIC_LIKE_REL
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -88,96 +85,67 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from PIC_GROUP_INFO
-    where PIC_GROUP_ID = #{picGroupId,jdbcType=INTEGER}
+    from PIC_LIKE_REL
+    where PIC_ID = #{picId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from PIC_GROUP_INFO
-    where PIC_GROUP_ID = #{picGroupId,jdbcType=INTEGER}
+    delete from PIC_LIKE_REL
+    where PIC_ID = #{picId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.bo.PicGroupInfoExample">
-    delete from PIC_GROUP_INFO
+  <delete id="deleteByExample" parameterType="com.bo.PicLikeRelExample">
+    delete from PIC_LIKE_REL
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.bo.PicGroupInfo" useGeneratedKeys="true" keyProperty="picGroupId">
-    insert into PIC_GROUP_INFO (PIC_GROUP_ID, PIC_DESCRIBE, PIC_UP_DATE, 
-      USER_ID, PIC_GROUP_STATE, PIC_TITLE
+  <insert id="insert" parameterType="com.bo.PicLikeRel">
+    insert into PIC_LIKE_REL (PIC_ID, USER_ID, DATE
       )
-    values (#{picGroupId,jdbcType=INTEGER}, #{picDescribe,jdbcType=VARCHAR}, #{picUpDate,jdbcType=VARCHAR}, 
-      #{userId,jdbcType=INTEGER}, #{picGroupState,jdbcType=VARCHAR}, #{picTitle,jdbcType=VARCHAR}
+    values (#{picId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{date,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.bo.PicGroupInfo">
-    insert into PIC_GROUP_INFO
+  <insert id="insertSelective" parameterType="com.bo.PicLikeRel">
+    insert into PIC_LIKE_REL
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="picGroupId != null">
-        PIC_GROUP_ID,
-      </if>
-      <if test="picDescribe != null">
-        PIC_DESCRIBE,
-      </if>
-      <if test="picUpDate != null">
-        PIC_UP_DATE,
+      <if test="picId != null">
+        PIC_ID,
       </if>
       <if test="userId != null">
         USER_ID,
       </if>
-      <if test="picGroupState != null">
-        PIC_GROUP_STATE,
-      </if>
-      <if test="picTitle != null">
-        PIC_TITLE,
+      <if test="date != null">
+        DATE,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="picGroupId != null">
-        #{picGroupId,jdbcType=INTEGER},
-      </if>
-      <if test="picDescribe != null">
-        #{picDescribe,jdbcType=VARCHAR},
-      </if>
-      <if test="picUpDate != null">
-        #{picUpDate,jdbcType=VARCHAR},
+      <if test="picId != null">
+        #{picId,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="picGroupState != null">
-        #{picGroupState,jdbcType=VARCHAR},
-      </if>
-      <if test="picTitle != null">
-        #{picTitle,jdbcType=VARCHAR},
+      <if test="date != null">
+        #{date,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.bo.PicGroupInfoExample" resultType="java.lang.Long">
-    select count(*) from PIC_GROUP_INFO
+  <select id="countByExample" parameterType="com.bo.PicLikeRelExample" resultType="java.lang.Long">
+    select count(*) from PIC_LIKE_REL
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update PIC_GROUP_INFO
+    update PIC_LIKE_REL
     <set>
-      <if test="record.picGroupId != null">
-        PIC_GROUP_ID = #{record.picGroupId,jdbcType=INTEGER},
-      </if>
-      <if test="record.picDescribe != null">
-        PIC_DESCRIBE = #{record.picDescribe,jdbcType=VARCHAR},
-      </if>
-      <if test="record.picUpDate != null">
-        PIC_UP_DATE = #{record.picUpDate,jdbcType=VARCHAR},
+      <if test="record.picId != null">
+        PIC_ID = #{record.picId,jdbcType=INTEGER},
       </if>
       <if test="record.userId != null">
         USER_ID = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.picGroupState != null">
-        PIC_GROUP_STATE = #{record.picGroupState,jdbcType=VARCHAR},
-      </if>
-      <if test="record.picTitle != null">
-        PIC_TITLE = #{record.picTitle,jdbcType=VARCHAR},
+      <if test="record.date != null">
+        DATE = #{record.date,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -185,45 +153,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update PIC_GROUP_INFO
-    set PIC_GROUP_ID = #{record.picGroupId,jdbcType=INTEGER},
-      PIC_DESCRIBE = #{record.picDescribe,jdbcType=VARCHAR},
-      PIC_UP_DATE = #{record.picUpDate,jdbcType=VARCHAR},
+    update PIC_LIKE_REL
+    set PIC_ID = #{record.picId,jdbcType=INTEGER},
       USER_ID = #{record.userId,jdbcType=INTEGER},
-      PIC_GROUP_STATE = #{record.picGroupState,jdbcType=VARCHAR},
-      PIC_TITLE = #{record.picTitle,jdbcType=VARCHAR}
+      DATE = #{record.date,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bo.PicGroupInfo">
-    update PIC_GROUP_INFO
+  <update id="updateByPrimaryKeySelective" parameterType="com.bo.PicLikeRel">
+    update PIC_LIKE_REL
     <set>
-      <if test="picDescribe != null">
-        PIC_DESCRIBE = #{picDescribe,jdbcType=VARCHAR},
-      </if>
-      <if test="picUpDate != null">
-        PIC_UP_DATE = #{picUpDate,jdbcType=VARCHAR},
-      </if>
       <if test="userId != null">
         USER_ID = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="picGroupState != null">
-        PIC_GROUP_STATE = #{picGroupState,jdbcType=VARCHAR},
-      </if>
-      <if test="picTitle != null">
-        PIC_TITLE = #{picTitle,jdbcType=VARCHAR},
+      <if test="date != null">
+        DATE = #{date,jdbcType=VARCHAR},
       </if>
     </set>
-    where PIC_GROUP_ID = #{picGroupId,jdbcType=INTEGER}
+    where PIC_ID = #{picId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.bo.PicGroupInfo">
-    update PIC_GROUP_INFO
-    set PIC_DESCRIBE = #{picDescribe,jdbcType=VARCHAR},
-      PIC_UP_DATE = #{picUpDate,jdbcType=VARCHAR},
-      USER_ID = #{userId,jdbcType=INTEGER},
-      PIC_GROUP_STATE = #{picGroupState,jdbcType=VARCHAR},
-      PIC_TITLE = #{picTitle,jdbcType=VARCHAR}
-    where PIC_GROUP_ID = #{picGroupId,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.bo.PicLikeRel">
+    update PIC_LIKE_REL
+    set USER_ID = #{userId,jdbcType=INTEGER},
+      DATE = #{date,jdbcType=VARCHAR}
+    where PIC_ID = #{picId,jdbcType=INTEGER}
   </update>
 </mapper>

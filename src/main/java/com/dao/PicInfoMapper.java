@@ -3,6 +3,8 @@ package com.dao;
 import com.bo.PicInfo;
 import com.bo.PicInfoExample;
 import java.util.List;
+
+import com.bo.QryPhotoBean;
 import org.apache.ibatis.annotations.Param;
 
 public interface PicInfoMapper {
@@ -27,4 +29,6 @@ public interface PicInfoMapper {
     int updateByPrimaryKeySelective(PicInfo record);
 
     int updateByPrimaryKey(PicInfo record);
+
+    List<QryPhotoBean> qryPhotoByCondition(QryPhotoBean qryPhotoBean);
 }

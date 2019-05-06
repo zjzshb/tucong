@@ -90,11 +90,14 @@ public class PhotoController {
     @ResponseBody
     @RequestMapping(value = "/doPublishPic",method = RequestMethod.POST)
     public BaseResponse PublishPic(@RequestParam(value = "sucPicArr[]") String[] sucPicArr
-            ,@RequestParam(value = "picDescribe") String picDescribe,HttpSession session){
+            ,@RequestParam(value = "picDescribe") String picDescribe
+            ,@RequestParam(value = "picLabel") String picLabel
+            ,@RequestParam(value = "picTitle") String picTitle
+            ,HttpSession session){
         BaseResponse response = new BaseResponse(true,BUSI_SUCCESS_CODE,BUSI_SUCCESS_MESSAGE);
         int userId = (int)session.getAttribute("userId");
         try {
-            photoService.changePicState(sucPicArr,userId,picDescribe);
+            photoService.changePicState(sucPicArr,userId,picDescribe,picLabel,picTitle);
         }catch (Exception e){
             System.out.println(e);
             response.setSuccess(false);
