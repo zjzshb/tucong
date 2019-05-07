@@ -15,7 +15,7 @@ public class QryPhotoBean {
     private String picLabelName;
     private Integer picLabelId ;
     private String uNickname;
-    private  int commentNum;
+    private  Integer commentNum;
     private Integer likeNum;
     private String  picAdress;
     private String qryStartDate;
@@ -95,11 +95,11 @@ public class QryPhotoBean {
         this.uNickname = uNickname;
     }
 
-    public int getCommentNum() {
+    public Integer getCommentNum() {
         return commentNum;
     }
 
-    public void setCommentNum(int commentNum) {
+    public void setCommentNum(Integer commentNum) {
         this.commentNum = commentNum;
     }
 

@@ -1,10 +1,7 @@
 package com.service.impl;
 
 import com.bo.*;
-import com.dao.PicGroupInfoMapper;
-import com.dao.PicInfoMapper;
-import com.dao.PicLabelInfoMapper;
-import com.dao.PicLabelRelMapper;
+import com.dao.*;
 import com.service.interfaces.PhotoService;
 import com.utils.DateUtils;
 import com.utils.StringUtils;
@@ -12,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by John on 2019/5/5.
@@ -30,6 +24,8 @@ public class PhotoServiceImpl implements PhotoService {
     private PicLabelInfoMapper picLabelInfoMapper;
     @Autowired
     private PicLabelRelMapper picLabelRelMapperl;
+    @Autowired
+    private PicCommentRelMapper picCommentRelMapper;
     @Override
     public int saveTempPic(PicInfo picInfo)throws Exception {
 
@@ -63,6 +59,39 @@ public class PhotoServiceImpl implements PhotoService {
 
 
     }
+
+    @Override
+    public List<QryPhotoBean> qryPhotoByCondition(QryPhotoBean qryPhotoBean) throws Exception {
+        qryPhotoBean.setPicGroupState("1");
+       return   picInfoMapper.qryPhotoByCondition(qryPhotoBean);
+    }
+
+    @Override
+    public QryPhotoDetailBean qryPhotoDetailByCondition(QryPhotoDetailBean qryPhotoDetailBean) throws Exception {
+        QryPhotoDetailBean result = picInfoMapper.qryPhotoDetailByCondition(qryPhotoDetailBean);
+
+        //获取照片组中各照片的地址
+        PicInfoExample picInfoExample = new PicInfoExample();
+        PicInfoExample.Criteria criteria = picInfoExample.createCriteria();
+        criteria.andPicGroupIdEqualTo(qryPhotoDetailBean.getGroupId());
+        List<PicInfo> picInfoList = picInfoMapper.selectByExample(picInfoExample);
+        List<String> addressList = new ArrayList<String>();
+        if(picInfoList!=null && picInfoList.size()!=0){
+            for (PicInfo picInfo : picInfoList){
+                addressList.add(picInfo.getPicAddress());
+            }
+        }
+        result.setAdress(addressList);
+        //获取照片组的评论
+        QryCommentBean qryCommentBean = new QryCommentBean();
+        qryCommentBean.setPicGroupId(qryPhotoDetailBean.getGroupId());
+        List<QryCommentBean> commentBeanList = picCommentRelMapper.qryCommentByCondition(qryCommentBean);
+        result.setComments(commentBeanList);
+
+
+        return result;
+    }
+
 
     private void saveLabel(int picGoupId,String Label){
         List<String> labelNameList = StringUtils.DuplicateRemoval(Label);

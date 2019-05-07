@@ -1,7 +1,10 @@
 package com.controller;
 
 import com.bo.PicInfo;
+import com.bo.QryPhotoBean;
+import com.bo.QryPhotoDetailBean;
 import com.service.interfaces.PhotoService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.utils.DateUtils;
 import com.utils.FastUtils;
 import com.vo.BaseResponse;
@@ -10,17 +13,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import static com.vo.BaseCode.BUSI_FAILURE_CODE;
 import static com.vo.BaseCode.BUSI_SUCCESS_CODE;
@@ -99,10 +101,49 @@ public class PhotoController {
         try {
             photoService.changePicState(sucPicArr,userId,picDescribe,picLabel,picTitle);
         }catch (Exception e){
-            System.out.println(e);
+            log.error(e.toString());
             response.setSuccess(false);
             response.setResultCode(BUSI_FAILURE_CODE);
             response.setResultMessage("发布失败");
+            return response;
+        }
+        return response;
+    }
+    @ResponseBody
+    @RequestMapping(value = "/qryPhotoByCondition",method = RequestMethod.POST)
+    public BaseResponse<QryPhotoBean> qryPhotoByCondition(@RequestBody QryPhotoBean qryPhotoBean){
+        BaseResponse response = new BaseResponse(true,BUSI_SUCCESS_CODE,BUSI_SUCCESS_MESSAGE);
+        try {
+           List<QryPhotoBean> results =photoService.qryPhotoByCondition(qryPhotoBean);
+            response.setResult(results);
+        } catch (Exception e) {
+            log.error(e.toString());
+            response.setSuccess(false);
+            response.setResultCode(BUSI_FAILURE_CODE);
+            response.setResultMessage("综合查询失败");
+            return response;
+        }
+        return response;
+
+    }
+    @RequestMapping(value = "/PhotoDtail")
+    public ModelAndView PhotoDtail (){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("showphoto");
+        return mv;
+    }
+    @ResponseBody
+    @RequestMapping(value = "/getPhotoDetail",method = RequestMethod.POST)
+    public BaseResponse<QryPhotoDetailBean> getPhotoDetail(@RequestBody QryPhotoDetailBean qryPhotoDetailBean){
+        BaseResponse response = new BaseResponse(true,BUSI_SUCCESS_CODE,BUSI_SUCCESS_MESSAGE);
+        try {
+           QryPhotoDetailBean result =  photoService.qryPhotoDetailByCondition(qryPhotoDetailBean);
+            response.setResult(result);
+        } catch (Exception e) {
+            log.error(e.toString());
+            response.setSuccess(false);
+            response.setResultCode(BUSI_FAILURE_CODE);
+            response.setResultMessage("获取图片详情失败");
             return response;
         }
         return response;

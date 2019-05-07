@@ -3,6 +3,9 @@ package com.dao;
 import com.bo.PicCommentRel;
 import com.bo.PicCommentRelExample;
 import java.util.List;
+
+import com.bo.QryCommentBean;
+import com.bo.QryPhotoBean;
 import org.apache.ibatis.annotations.Param;
 
 public interface PicCommentRelMapper {
@@ -27,4 +30,6 @@ public interface PicCommentRelMapper {
     int updateByPrimaryKeySelective(PicCommentRel record);
 
     int updateByPrimaryKey(PicCommentRel record);
+
+    List<QryCommentBean> qryCommentByCondition(QryCommentBean qryCommentBean);
 }
