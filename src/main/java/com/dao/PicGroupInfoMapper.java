@@ -10,7 +10,7 @@ public interface PicGroupInfoMapper {
 
     int deleteByExample(PicGroupInfoExample example);
 
-    int deleteByPrimaryKey(Byte picGroupId);
+    int deleteByPrimaryKey(Integer picGroupId);
 
     int insert(PicGroupInfo record);
 
@@ -18,7 +18,7 @@ public interface PicGroupInfoMapper {
 
     List<PicGroupInfo> selectByExample(PicGroupInfoExample example);
 
-    PicGroupInfo selectByPrimaryKey(Byte picGroupId);
+    PicGroupInfo selectByPrimaryKey(Integer picGroupId);
 
     int updateByExampleSelective(@Param("record") PicGroupInfo record, @Param("example") PicGroupInfoExample example);
 

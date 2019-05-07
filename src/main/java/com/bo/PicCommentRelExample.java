@@ -3,14 +3,14 @@ package com.bo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PicGroupInfoExample {
+public class PicCommentRelExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public PicGroupInfoExample() {
+    public PicCommentRelExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -164,146 +164,6 @@ public class PicGroupInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andPicDescribeIsNull() {
-            addCriterion("PIC_DESCRIBE is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicDescribeIsNotNull() {
-            addCriterion("PIC_DESCRIBE is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicDescribeEqualTo(String value) {
-            addCriterion("PIC_DESCRIBE =", value, "picDescribe");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicDescribeNotEqualTo(String value) {
-            addCriterion("PIC_DESCRIBE <>", value, "picDescribe");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicDescribeGreaterThan(String value) {
-            addCriterion("PIC_DESCRIBE >", value, "picDescribe");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicDescribeGreaterThanOrEqualTo(String value) {
-            addCriterion("PIC_DESCRIBE >=", value, "picDescribe");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicDescribeLessThan(String value) {
-            addCriterion("PIC_DESCRIBE <", value, "picDescribe");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicDescribeLessThanOrEqualTo(String value) {
-            addCriterion("PIC_DESCRIBE <=", value, "picDescribe");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicDescribeLike(String value) {
-            addCriterion("PIC_DESCRIBE like", value, "picDescribe");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicDescribeNotLike(String value) {
-            addCriterion("PIC_DESCRIBE not like", value, "picDescribe");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicDescribeIn(List<String> values) {
-            addCriterion("PIC_DESCRIBE in", values, "picDescribe");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicDescribeNotIn(List<String> values) {
-            addCriterion("PIC_DESCRIBE not in", values, "picDescribe");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicDescribeBetween(String value1, String value2) {
-            addCriterion("PIC_DESCRIBE between", value1, value2, "picDescribe");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicDescribeNotBetween(String value1, String value2) {
-            addCriterion("PIC_DESCRIBE not between", value1, value2, "picDescribe");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicUpDateIsNull() {
-            addCriterion("PIC_UP_DATE is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicUpDateIsNotNull() {
-            addCriterion("PIC_UP_DATE is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicUpDateEqualTo(String value) {
-            addCriterion("PIC_UP_DATE =", value, "picUpDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicUpDateNotEqualTo(String value) {
-            addCriterion("PIC_UP_DATE <>", value, "picUpDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicUpDateGreaterThan(String value) {
-            addCriterion("PIC_UP_DATE >", value, "picUpDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicUpDateGreaterThanOrEqualTo(String value) {
-            addCriterion("PIC_UP_DATE >=", value, "picUpDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicUpDateLessThan(String value) {
-            addCriterion("PIC_UP_DATE <", value, "picUpDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicUpDateLessThanOrEqualTo(String value) {
-            addCriterion("PIC_UP_DATE <=", value, "picUpDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicUpDateLike(String value) {
-            addCriterion("PIC_UP_DATE like", value, "picUpDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicUpDateNotLike(String value) {
-            addCriterion("PIC_UP_DATE not like", value, "picUpDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicUpDateIn(List<String> values) {
-            addCriterion("PIC_UP_DATE in", values, "picUpDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicUpDateNotIn(List<String> values) {
-            addCriterion("PIC_UP_DATE not in", values, "picUpDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicUpDateBetween(String value1, String value2) {
-            addCriterion("PIC_UP_DATE between", value1, value2, "picUpDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andPicUpDateNotBetween(String value1, String value2) {
-            addCriterion("PIC_UP_DATE not between", value1, value2, "picUpDate");
-            return (Criteria) this;
-        }
-
         public Criteria andUserIdIsNull() {
             addCriterion("USER_ID is null");
             return (Criteria) this;
@@ -364,143 +224,213 @@ public class PicGroupInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupStateIsNull() {
-            addCriterion("PIC_GROUP_STATE is null");
+        public Criteria andCommMainIsNull() {
+            addCriterion("COMM_MAIN is null");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupStateIsNotNull() {
-            addCriterion("PIC_GROUP_STATE is not null");
+        public Criteria andCommMainIsNotNull() {
+            addCriterion("COMM_MAIN is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupStateEqualTo(String value) {
-            addCriterion("PIC_GROUP_STATE =", value, "picGroupState");
+        public Criteria andCommMainEqualTo(String value) {
+            addCriterion("COMM_MAIN =", value, "commMain");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupStateNotEqualTo(String value) {
-            addCriterion("PIC_GROUP_STATE <>", value, "picGroupState");
+        public Criteria andCommMainNotEqualTo(String value) {
+            addCriterion("COMM_MAIN <>", value, "commMain");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupStateGreaterThan(String value) {
-            addCriterion("PIC_GROUP_STATE >", value, "picGroupState");
+        public Criteria andCommMainGreaterThan(String value) {
+            addCriterion("COMM_MAIN >", value, "commMain");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupStateGreaterThanOrEqualTo(String value) {
-            addCriterion("PIC_GROUP_STATE >=", value, "picGroupState");
+        public Criteria andCommMainGreaterThanOrEqualTo(String value) {
+            addCriterion("COMM_MAIN >=", value, "commMain");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupStateLessThan(String value) {
-            addCriterion("PIC_GROUP_STATE <", value, "picGroupState");
+        public Criteria andCommMainLessThan(String value) {
+            addCriterion("COMM_MAIN <", value, "commMain");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupStateLessThanOrEqualTo(String value) {
-            addCriterion("PIC_GROUP_STATE <=", value, "picGroupState");
+        public Criteria andCommMainLessThanOrEqualTo(String value) {
+            addCriterion("COMM_MAIN <=", value, "commMain");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupStateLike(String value) {
-            addCriterion("PIC_GROUP_STATE like", value, "picGroupState");
+        public Criteria andCommMainLike(String value) {
+            addCriterion("COMM_MAIN like", value, "commMain");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupStateNotLike(String value) {
-            addCriterion("PIC_GROUP_STATE not like", value, "picGroupState");
+        public Criteria andCommMainNotLike(String value) {
+            addCriterion("COMM_MAIN not like", value, "commMain");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupStateIn(List<String> values) {
-            addCriterion("PIC_GROUP_STATE in", values, "picGroupState");
+        public Criteria andCommMainIn(List<String> values) {
+            addCriterion("COMM_MAIN in", values, "commMain");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupStateNotIn(List<String> values) {
-            addCriterion("PIC_GROUP_STATE not in", values, "picGroupState");
+        public Criteria andCommMainNotIn(List<String> values) {
+            addCriterion("COMM_MAIN not in", values, "commMain");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupStateBetween(String value1, String value2) {
-            addCriterion("PIC_GROUP_STATE between", value1, value2, "picGroupState");
+        public Criteria andCommMainBetween(String value1, String value2) {
+            addCriterion("COMM_MAIN between", value1, value2, "commMain");
             return (Criteria) this;
         }
 
-        public Criteria andPicGroupStateNotBetween(String value1, String value2) {
-            addCriterion("PIC_GROUP_STATE not between", value1, value2, "picGroupState");
+        public Criteria andCommMainNotBetween(String value1, String value2) {
+            addCriterion("COMM_MAIN not between", value1, value2, "commMain");
             return (Criteria) this;
         }
 
-        public Criteria andPicTitleIsNull() {
-            addCriterion("PIC_TITLE is null");
+        public Criteria andCommDateIsNull() {
+            addCriterion("COMM_DATE is null");
             return (Criteria) this;
         }
 
-        public Criteria andPicTitleIsNotNull() {
-            addCriterion("PIC_TITLE is not null");
+        public Criteria andCommDateIsNotNull() {
+            addCriterion("COMM_DATE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPicTitleEqualTo(String value) {
-            addCriterion("PIC_TITLE =", value, "picTitle");
+        public Criteria andCommDateEqualTo(String value) {
+            addCriterion("COMM_DATE =", value, "commDate");
             return (Criteria) this;
         }
 
-        public Criteria andPicTitleNotEqualTo(String value) {
-            addCriterion("PIC_TITLE <>", value, "picTitle");
+        public Criteria andCommDateNotEqualTo(String value) {
+            addCriterion("COMM_DATE <>", value, "commDate");
             return (Criteria) this;
         }
 
-        public Criteria andPicTitleGreaterThan(String value) {
-            addCriterion("PIC_TITLE >", value, "picTitle");
+        public Criteria andCommDateGreaterThan(String value) {
+            addCriterion("COMM_DATE >", value, "commDate");
             return (Criteria) this;
         }
 
-        public Criteria andPicTitleGreaterThanOrEqualTo(String value) {
-            addCriterion("PIC_TITLE >=", value, "picTitle");
+        public Criteria andCommDateGreaterThanOrEqualTo(String value) {
+            addCriterion("COMM_DATE >=", value, "commDate");
             return (Criteria) this;
         }
 
-        public Criteria andPicTitleLessThan(String value) {
-            addCriterion("PIC_TITLE <", value, "picTitle");
+        public Criteria andCommDateLessThan(String value) {
+            addCriterion("COMM_DATE <", value, "commDate");
             return (Criteria) this;
         }
 
-        public Criteria andPicTitleLessThanOrEqualTo(String value) {
-            addCriterion("PIC_TITLE <=", value, "picTitle");
+        public Criteria andCommDateLessThanOrEqualTo(String value) {
+            addCriterion("COMM_DATE <=", value, "commDate");
             return (Criteria) this;
         }
 
-        public Criteria andPicTitleLike(String value) {
-            addCriterion("PIC_TITLE like", value, "picTitle");
+        public Criteria andCommDateLike(String value) {
+            addCriterion("COMM_DATE like", value, "commDate");
             return (Criteria) this;
         }
 
-        public Criteria andPicTitleNotLike(String value) {
-            addCriterion("PIC_TITLE not like", value, "picTitle");
+        public Criteria andCommDateNotLike(String value) {
+            addCriterion("COMM_DATE not like", value, "commDate");
             return (Criteria) this;
         }
 
-        public Criteria andPicTitleIn(List<String> values) {
-            addCriterion("PIC_TITLE in", values, "picTitle");
+        public Criteria andCommDateIn(List<String> values) {
+            addCriterion("COMM_DATE in", values, "commDate");
             return (Criteria) this;
         }
 
-        public Criteria andPicTitleNotIn(List<String> values) {
-            addCriterion("PIC_TITLE not in", values, "picTitle");
+        public Criteria andCommDateNotIn(List<String> values) {
+            addCriterion("COMM_DATE not in", values, "commDate");
             return (Criteria) this;
         }
 
-        public Criteria andPicTitleBetween(String value1, String value2) {
-            addCriterion("PIC_TITLE between", value1, value2, "picTitle");
+        public Criteria andCommDateBetween(String value1, String value2) {
+            addCriterion("COMM_DATE between", value1, value2, "commDate");
             return (Criteria) this;
         }
 
-        public Criteria andPicTitleNotBetween(String value1, String value2) {
-            addCriterion("PIC_TITLE not between", value1, value2, "picTitle");
+        public Criteria andCommDateNotBetween(String value1, String value2) {
+            addCriterion("COMM_DATE not between", value1, value2, "commDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommStateIsNull() {
+            addCriterion("COMM_STATE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommStateIsNotNull() {
+            addCriterion("COMM_STATE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommStateEqualTo(String value) {
+            addCriterion("COMM_STATE =", value, "commState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommStateNotEqualTo(String value) {
+            addCriterion("COMM_STATE <>", value, "commState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommStateGreaterThan(String value) {
+            addCriterion("COMM_STATE >", value, "commState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommStateGreaterThanOrEqualTo(String value) {
+            addCriterion("COMM_STATE >=", value, "commState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommStateLessThan(String value) {
+            addCriterion("COMM_STATE <", value, "commState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommStateLessThanOrEqualTo(String value) {
+            addCriterion("COMM_STATE <=", value, "commState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommStateLike(String value) {
+            addCriterion("COMM_STATE like", value, "commState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommStateNotLike(String value) {
+            addCriterion("COMM_STATE not like", value, "commState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommStateIn(List<String> values) {
+            addCriterion("COMM_STATE in", values, "commState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommStateNotIn(List<String> values) {
+            addCriterion("COMM_STATE not in", values, "commState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommStateBetween(String value1, String value2) {
+            addCriterion("COMM_STATE between", value1, value2, "commState");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommStateNotBetween(String value1, String value2) {
+            addCriterion("COMM_STATE not between", value1, value2, "commState");
             return (Criteria) this;
         }
     }

@@ -3,6 +3,8 @@ package com.dao;
 import com.bo.PicInfo;
 import com.bo.PicInfoExample;
 import java.util.List;
+
+import com.bo.QryPhotoBean;
 import org.apache.ibatis.annotations.Param;
 
 public interface PicInfoMapper {
@@ -10,7 +12,7 @@ public interface PicInfoMapper {
 
     int deleteByExample(PicInfoExample example);
 
-    int deleteByPrimaryKey(Byte picId);
+    int deleteByPrimaryKey(Integer picId);
 
     int insert(PicInfo record);
 
@@ -18,7 +20,7 @@ public interface PicInfoMapper {
 
     List<PicInfo> selectByExample(PicInfoExample example);
 
-    PicInfo selectByPrimaryKey(Byte picId);
+    PicInfo selectByPrimaryKey(Integer picId);
 
     int updateByExampleSelective(@Param("record") PicInfo record, @Param("example") PicInfoExample example);
 
@@ -27,4 +29,6 @@ public interface PicInfoMapper {
     int updateByPrimaryKeySelective(PicInfo record);
 
     int updateByPrimaryKey(PicInfo record);
+
+    List<QryPhotoBean> qryPhotoByCondition(QryPhotoBean qryPhotoBean);
 }

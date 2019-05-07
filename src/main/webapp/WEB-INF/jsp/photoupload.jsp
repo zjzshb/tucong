@@ -23,7 +23,10 @@
 		<div class="artleft">
 			
 			<div class="files">
-				<div id="showphoto"></div>
+				<div id="showphoto">
+
+				</div>
+
 				<form class="file" id="uploadForm"  method="post"  enctype="multipart/form-data">
 					<div class="file-box">
 						<img src="img/fileupPage/crossXX.png">
@@ -42,91 +45,27 @@
 
 
 			<div class="photoTitle">标题</div>
-			<label> <input class="title" type="text" name="title">
+			<label> <input class="title" type="text" name="title" id = "picTitle">
 			</label>
 			<div class="phtotDes">作品描述</div>
-			<label> <textarea class="describe" name="describle"></textarea>
+			<label> <textarea class="describe" name="describle" id = "picDescribe"></textarea>
 			</label>
 			<div class="photoLabel">
 				标签（<a>输入标签内容回车即可添加标签</a>） <a>0</a>/10
 			</div>
 			<label> <input class="labelA" type="text" name="label"
-				value="">
+				value="" id = "picLabel">
 			</label>
 			<div class="PhotoUsual">常用标签</div>
-			<div class="labelsA">
-				<div>
-					<a>#人像</a>
-				</div>
-				<div>
-					<a>#风光</a>
-				</div>
-				<div>
-					<a>#街拍</a>
-				</div>
-				<div>
-					<a>#城市</a>
-				</div>
-				<div>
-					<a>#旅行</a>
-				</div>
-				<div>
-					<a>#纪实</a>
-				</div>
-				<div>
-					<a>#色彩</a>
-				</div>
-				<div>
-					<a>#手机</a>
-				</div>
-				<div>
-					<a>#黑白</a>
-				</div>
-				<div>
-					<a>#胶片</a>
-				</div>
-				<div>
-					<a>#抓拍</a>
-				</div>
+			<div class="labelsA" id = "showLabel">
+
 			</div>
 			<div class="PhotoAppro">推荐标签</div>
 			<div class="labels">
-				<div>
-					<a>#人像</a>
-				</div>
-				<div>
-					<a>#风光</a>
-				</div>
-				<div>
-					<a>#街拍</a>
-				</div>
-				<div>
-					<a>#城市</a>
-				</div>
-				<div>
-					<a>#旅行</a>
-				</div>
-				<div>
-					<a>#纪实</a>
-				</div>
-				<div>
-					<a>#色彩</a>
-				</div>
-				<div>
-					<a>#手机</a>
-				</div>
-				<div>
-					<a>#黑白</a>
-				</div>
-				<div>
-					<a>#胶片</a>
-				</div>
-				<div>
-					<a>#抓拍</a>
-				</div>
+
 			</div>
 		</div>
-		<div class="submit">发布</div>
+		<div class="submit" id = "publishPic">发布</div>
 		</aside>
 	
 	</article>

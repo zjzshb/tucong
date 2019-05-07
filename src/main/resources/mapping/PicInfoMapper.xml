@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.PicInfoMapper">
   <resultMap id="BaseResultMap" type="com.bo.PicInfo">
-    <id column="PIC_ID" jdbcType="TINYINT" property="picId" />
+    <id column="PIC_ID" jdbcType="INTEGER" property="picId" />
     <result column="PIC_ADDRESS" jdbcType="VARCHAR" property="picAddress" />
-    <result column="PIC_GROUP_ID" jdbcType="TINYINT" property="picGroupId" />
+    <result column="PIC_GROUP_ID" jdbcType="INTEGER" property="picGroupId" />
     <result column="PIC_UP_DATE" jdbcType="VARCHAR" property="picUpDate" />
-    <result column="PIC_UP_USER" jdbcType="TINYINT" property="picUpUser" />
+    <result column="PIC_UP_USER" jdbcType="INTEGER" property="picUpUser" />
     <result column="PIC_STATE" jdbcType="VARCHAR" property="picState" />
     <result column="PIC_SIZE" jdbcType="VARCHAR" property="picSize" />
   </resultMap>
@@ -86,15 +86,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Byte" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from PIC_INFO
-    where PIC_ID = #{picId,jdbcType=TINYINT}
+    where PIC_ID = #{picId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Byte">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from PIC_INFO
-    where PIC_ID = #{picId,jdbcType=TINYINT}
+    where PIC_ID = #{picId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.bo.PicInfoExample">
     delete from PIC_INFO
@@ -102,12 +102,12 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.bo.PicInfo">
+  <insert id="insert" parameterType="com.bo.PicInfo" useGeneratedKeys="true" keyProperty="picId">
     insert into PIC_INFO (PIC_ID, PIC_ADDRESS, PIC_GROUP_ID, 
       PIC_UP_DATE, PIC_UP_USER, PIC_STATE, 
       PIC_SIZE)
-    values (#{picId,jdbcType=TINYINT}, #{picAddress,jdbcType=VARCHAR}, #{picGroupId,jdbcType=TINYINT}, 
-      #{picUpDate,jdbcType=VARCHAR}, #{picUpUser,jdbcType=TINYINT}, #{picState,jdbcType=VARCHAR}, 
+    values (#{picId,jdbcType=INTEGER}, #{picAddress,jdbcType=VARCHAR}, #{picGroupId,jdbcType=INTEGER}, 
+      #{picUpDate,jdbcType=VARCHAR}, #{picUpUser,jdbcType=INTEGER}, #{picState,jdbcType=VARCHAR}, 
       #{picSize,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.bo.PicInfo">
@@ -137,19 +137,19 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="picId != null">
-        #{picId,jdbcType=TINYINT},
+        #{picId,jdbcType=INTEGER},
       </if>
       <if test="picAddress != null">
         #{picAddress,jdbcType=VARCHAR},
       </if>
       <if test="picGroupId != null">
-        #{picGroupId,jdbcType=TINYINT},
+        #{picGroupId,jdbcType=INTEGER},
       </if>
       <if test="picUpDate != null">
         #{picUpDate,jdbcType=VARCHAR},
       </if>
       <if test="picUpUser != null">
-        #{picUpUser,jdbcType=TINYINT},
+        #{picUpUser,jdbcType=INTEGER},
       </if>
       <if test="picState != null">
         #{picState,jdbcType=VARCHAR},
@@ -169,19 +169,19 @@
     update PIC_INFO
     <set>
       <if test="record.picId != null">
-        PIC_ID = #{record.picId,jdbcType=TINYINT},
+        PIC_ID = #{record.picId,jdbcType=INTEGER},
       </if>
       <if test="record.picAddress != null">
         PIC_ADDRESS = #{record.picAddress,jdbcType=VARCHAR},
       </if>
       <if test="record.picGroupId != null">
-        PIC_GROUP_ID = #{record.picGroupId,jdbcType=TINYINT},
+        PIC_GROUP_ID = #{record.picGroupId,jdbcType=INTEGER},
       </if>
       <if test="record.picUpDate != null">
         PIC_UP_DATE = #{record.picUpDate,jdbcType=VARCHAR},
       </if>
       <if test="record.picUpUser != null">
-        PIC_UP_USER = #{record.picUpUser,jdbcType=TINYINT},
+        PIC_UP_USER = #{record.picUpUser,jdbcType=INTEGER},
       </if>
       <if test="record.picState != null">
         PIC_STATE = #{record.picState,jdbcType=VARCHAR},
@@ -196,11 +196,11 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update PIC_INFO
-    set PIC_ID = #{record.picId,jdbcType=TINYINT},
+    set PIC_ID = #{record.picId,jdbcType=INTEGER},
       PIC_ADDRESS = #{record.picAddress,jdbcType=VARCHAR},
-      PIC_GROUP_ID = #{record.picGroupId,jdbcType=TINYINT},
+      PIC_GROUP_ID = #{record.picGroupId,jdbcType=INTEGER},
       PIC_UP_DATE = #{record.picUpDate,jdbcType=VARCHAR},
-      PIC_UP_USER = #{record.picUpUser,jdbcType=TINYINT},
+      PIC_UP_USER = #{record.picUpUser,jdbcType=INTEGER},
       PIC_STATE = #{record.picState,jdbcType=VARCHAR},
       PIC_SIZE = #{record.picSize,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -214,13 +214,13 @@
         PIC_ADDRESS = #{picAddress,jdbcType=VARCHAR},
       </if>
       <if test="picGroupId != null">
-        PIC_GROUP_ID = #{picGroupId,jdbcType=TINYINT},
+        PIC_GROUP_ID = #{picGroupId,jdbcType=INTEGER},
       </if>
       <if test="picUpDate != null">
         PIC_UP_DATE = #{picUpDate,jdbcType=VARCHAR},
       </if>
       <if test="picUpUser != null">
-        PIC_UP_USER = #{picUpUser,jdbcType=TINYINT},
+        PIC_UP_USER = #{picUpUser,jdbcType=INTEGER},
       </if>
       <if test="picState != null">
         PIC_STATE = #{picState,jdbcType=VARCHAR},
@@ -229,16 +229,94 @@
         PIC_SIZE = #{picSize,jdbcType=VARCHAR},
       </if>
     </set>
-    where PIC_ID = #{picId,jdbcType=TINYINT}
+    where PIC_ID = #{picId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.bo.PicInfo">
     update PIC_INFO
     set PIC_ADDRESS = #{picAddress,jdbcType=VARCHAR},
-      PIC_GROUP_ID = #{picGroupId,jdbcType=TINYINT},
+      PIC_GROUP_ID = #{picGroupId,jdbcType=INTEGER},
       PIC_UP_DATE = #{picUpDate,jdbcType=VARCHAR},
-      PIC_UP_USER = #{picUpUser,jdbcType=TINYINT},
+      PIC_UP_USER = #{picUpUser,jdbcType=INTEGER},
       PIC_STATE = #{picState,jdbcType=VARCHAR},
       PIC_SIZE = #{picSize,jdbcType=VARCHAR}
-    where PIC_ID = #{picId,jdbcType=TINYINT}
+    where PIC_ID = #{picId,jdbcType=INTEGER}
   </update>
+  <select id="qryPhotoByCondition" parameterType="com.bo.QryPhotoBean" resultType="com.bo.QryPhotoBean">
+    SELECT
+	*
+FROM
+	(
+		SELECT
+            g.PIC_DESCRIBE as picDescribe,
+            g.PIC_GROUP_ID as picGroupId,
+            g.PIC_GROUP_STATE as  picGroupState,
+            g.PIC_TITLE as picTitle,
+            g.PIC_UP_DATE as picUpDate,
+            g.USER_ID as userId,
+            li.PIC_LABEL_NAME as picLabelName,
+            li.PIC_LABEL_ID as picLabelId,
+            u.U_NICKNAME as uNickname,
+			(
+				SELECT
+					COUNT(*)
+				FROM
+					PIC_COMMENT_REL AS c
+				WHERE
+					c.PIC_GROUP_ID = g.PIC_GROUP_ID
+			) AS commentNum,
+			(
+				SELECT
+					COUNT(*)
+				FROM
+					PIC_LIKE_REL AS l
+				WHERE
+					l.PIC_ID = g.PIC_GROUP_ID
+			) AS likeNum,
+			(
+				SELECT
+					PIC_INFO.PIC_ADDRESS
+				FROM
+					PIC_GROUP_INFO,
+					PIC_INFO
+				WHERE
+					g.PIC_GROUP_ID = PIC_INFO.PIC_GROUP_ID LIMIT 0,1
+			) AS picAdress
+		FROM
+			PIC_GROUP_INFO AS g,
+			PIC_LABEL_INFO AS li,
+			PIC_LABEL_REL AS lr,
+			USER_INFO as u
+		WHERE
+			g.PIC_GROUP_ID = lr.PIC_GROUP_ID
+		AND lr.PIC_LABEL_ID = li.PIC_LABEL_ID
+		AND u.USER_ID = g.USER_ID
+	) a
+
+      WHERE 1=1
+      <if test="picTitle != null">
+          and PIC_TITLE = #{picTitle jdbcType=VARCHAR}
+      </if>
+      <if test="userId != null">
+          and USER_ID = #{userId jdbcType=INTEGER}
+      </if>
+      <if test="picLabelName != null">
+          and PIC_LABEL_NAME = #{picLabelName jdbcType=VARCHAR}
+      </if>
+    <if test="picLabelId != null">
+      and PIC_LABEL_ID = #{picLabelId jdbcType=INTEGER}
+    </if>
+    <if test="qryStartDate != null">
+      and PIC_UP_DATE &gt;= #{qryStartDate dbcType=VARCHAR}
+    </if>
+
+    <if test="qryEndDate != null">
+      and PIC_UP_DATE &lt;= #{qryEndDate dbcType=VARCHAR}
+    </if>
+    <if test="start != null and end !=null " >
+      LIMIT #{start jdbcType=INTEGER} ,#{end jdbcType=INTEGER};
+    </if>
+
+
+
+  </select>
 </mapper>
