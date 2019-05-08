@@ -2,6 +2,7 @@ package com.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bo.Account;
+import com.bo.UserInfoDetail;
 import com.bo.UserRegisterReq;
 import com.miaodiyun.httpApiDemo.IndustrySMS;
 import com.service.interfaces.AccountService;
@@ -135,5 +136,21 @@ public class AccountController {
 //        }
 //        return response;
 //    }
+
+    @RequestMapping(value = "gerUserInfo" ,method = RequestMethod.POST)
+    @ResponseBody
+    private BaseResponse<UserInfoDetail> gerUserInfo(HttpSession session){
+        BaseResponse response = new BaseResponse(true,BUSI_SUCCESS_CODE,BUSI_SUCCESS_MESSAGE);
+        Integer userId = (Integer) session.getAttribute("userId");
+        try {
+            UserInfoDetail result = accountService.qryUserInfoDetail(userId);
+            response.setResult(result);
+        } catch (Exception e) {
+            response.setSuccess(false);
+            response.setResultCode(BUSI_FAILURE_CODE);
+            response.setResultMessage("初始化用户信息失败");
+        }
+        return response;
+    }
 
 }

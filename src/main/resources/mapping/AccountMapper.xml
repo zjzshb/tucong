@@ -221,4 +221,28 @@
     where A.USER_PHONE = #{userPhone,jdbcType=VARCHAR}
     and A.USER_PWD = #{userPwd,jdbcType=VARCHAR}
   </select>
+
+  <select id="qryUserInfoDetail" parameterType="com.bo.UserInfoDetail" resultType="com.bo.UserInfoDetail">
+    SELECT
+	a.USER_ID as userId,
+	a.USER_NAME AS userName,
+	a.USER_PHONE as userPhone,
+a.USER_ROOT as userRoot,
+u.U_ADDRESS as uAddress,
+u.U_DIS as uDis,
+u.U_BG as uBg,
+u.U_TX as uTx,
+u.U_SEX as uSex,
+u.U_NICKNAME as uNickname,
+u.U_CREATETIME as uCreatetime
+FROM
+	ACCOUNT AS a,
+	USER_INFO AS u
+WHERE
+	a.USER_ID = u.USER_ID
+	<if test="userId!=null">
+      AND a.USER_ID = #{userId,jdbcType=TINYINT}
+    </if>
+
+  </select>
 </mapper>

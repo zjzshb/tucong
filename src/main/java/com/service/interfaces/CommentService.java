@@ -1,5 +1,6 @@
 package com.service.interfaces;
 
+import com.bo.PicCommentRel;
 import com.bo.QryCommentBean;
 
 import java.util.List;
@@ -9,4 +10,6 @@ import java.util.List;
  */
 public interface CommentService {
     public List<QryCommentBean> QryCommentByCondition(QryCommentBean qryCommentBean)throws Exception;
+
+    public PicCommentRel insetComment(PicCommentRel picCommentRel) throws  Exception;
 }

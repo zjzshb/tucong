@@ -3,6 +3,7 @@ package com.service.interfaces;
 import com.bo.Account;
 
 import com.bo.UserInfo;
+import com.bo.UserInfoDetail;
 import org.springframework.stereotype.Service;
 
 
@@ -19,5 +20,7 @@ public interface AccountService {
     public UserInfo queryUserInfoById(int id);
 
     public Account queryAccountByPhone(String userName);
+
+    public UserInfoDetail qryUserInfoDetail(Integer userId)throws Exception;
 
 }

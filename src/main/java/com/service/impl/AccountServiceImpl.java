@@ -3,6 +3,7 @@ package com.service.impl;
 import com.bo.Account;
 import com.bo.AccountExample;
 import com.bo.UserInfo;
+import com.bo.UserInfoDetail;
 import com.dao.AccountMapper;
 import com.dao.UserInfoMapper;
 import com.service.interfaces.AccountService;
@@ -75,6 +76,14 @@ public class AccountServiceImpl implements AccountService {
              accountRe = re.get(0);
         }
         return accountRe;
+    }
+
+    @Override
+    public UserInfoDetail qryUserInfoDetail(Integer userId) throws Exception {
+        UserInfoDetail req = new UserInfoDetail();
+        req.setUserId(userId);
+        return  accountMapper.qryUserInfoDetail(req).get(0);
+
     }
 
 

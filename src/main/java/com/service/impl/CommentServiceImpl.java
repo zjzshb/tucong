@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.bo.PicCommentRel;
 import com.bo.QryCommentBean;
 import com.dao.PicCommentRelMapper;
 import com.service.interfaces.CommentService;
@@ -18,5 +19,12 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public List<QryCommentBean> QryCommentByCondition(QryCommentBean qryCommentBean) throws Exception {
         return picCommentRelMapper.qryCommentByCondition(qryCommentBean);
+    }
+
+    @Override
+    public PicCommentRel insetComment(PicCommentRel picCommentRel) throws Exception {
+
+         picCommentRelMapper.insert(picCommentRel);
+        return picCommentRel;
     }
 }

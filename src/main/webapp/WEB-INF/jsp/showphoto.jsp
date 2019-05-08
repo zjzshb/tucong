@@ -40,12 +40,8 @@
 
 		</div>
 		<footer>
-		<div class="scroll">
-			<div class="cell" style="background: url('http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg') center/cover;"></div>
-			<div class="cell" style="background: url('http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg') center/cover;"></div>
-			<div class="cell" style="background: url('http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg') center/cover;"></div>
-			<div class="cell" style="background: url('http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg') center/cover;"></div>
-			<div class="cell" style="background: url('http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg') center/cover;"></div>
+		<div class="scroll" id = "showPhotos">
+			<%--<div class="cell" style="background: url('http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg') center/cover;"></div>--%>
 		</div>
 		<div class="jumppre" title="上一组"></div>
 		<div class="jumpnext" title="下一组"></div>
@@ -55,22 +51,24 @@
 		<div id="right_nav">
 			<a href="#" class="olike">${photoLike }</a> <a href="#" class="info">${commentCount }</a>
 			<a href="#" class="wechat"></a> <a href="#" class="sina"></a> <a
-				href="#">cd</a>
+				href="#"></a>
 		</div>
 		<div id="information">
 			<div id="master">
-				<a href=""><img src="./pic/user_tou/tou-2.jpg" alt="xx"></a>
+
 				<div id="master_other">
-					<a href="">${PhotoUsername }</a><br>
-					<span>5月12日 </span><span> 浏览量: 2885</span>
+					<a href="" id ="nikeName"></a><br>
+					<div id="userId" style="display: none"></div>
+
+					<span id = "picUpDate"></span><span> 浏览量: 2885</span>
 				</div>
 				<div class="btn">
 					<a href="#">关注</a>
 				</div>
 			</div>
 			<div id="label">
-				<h3>${photoTitle }</h3>
-				<p>${photoDes}</p>
+				<h3 id = "picTitle"></h3>
+				<p id = "picDescribe"></p>
 				<div id="labels">
 				<c:forEach var="item" items="${labelList}">
 					<a href="#">${item.labelName }</a>
@@ -86,20 +84,18 @@
 				</div>
 			</div>
 			<div id="people-say">
-				<textarea placeholder="喜欢？摸着我胸说两句？" id="commentText"></textarea>
+				<textarea placeholder="评论" id="commentText"></textarea>
 				<div id="yourword" class="addComment">
 					<a >评论</a>
 				</div>
-				<c:forEach var="item" items="${commentList	}">
 					<div class="other">
-						<a href=""><img src="./pic/user_tou/tou-3.jpg" alt="dd"></a>
-						<div class="the-list">
+						<%--<a href=""><img src="./pic/user_tou/tou-3.jpg" alt="dd"></a>--%>
+						<div class="the-list" id="comments">
 							<a href="">${item.userName}</a><br> <span>${ item.commentText}</span><br>
 							<!--  <div class="pinglun">
                             <a href="">Yx :</a><span>谢谢你的评论！</span><br>-->
 						</div>
 					</div>
-				</c:forEach>
 			</div>
 
 		</div>

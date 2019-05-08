@@ -209,4 +209,37 @@
       COMM_STATE = #{commState,jdbcType=VARCHAR}
     where PIC_GROUP_ID = #{picGroupId,jdbcType=INTEGER}
   </update>
+
+  <select id="qryCommentByCondition" parameterType="com.bo.QryCommentBean" resultType="com.bo.QryCommentBean">
+    SELECT
+	c.PIC_GROUP_ID AS picGroupId,
+c.USER_ID AS userId,
+c.COMM_MAIN AS commMain,
+c.COMM_DATE AS commDate,
+c.COMM_STATE AS commState,
+u.U_NICKNAME AS nikeName
+FROM
+	PIC_COMMENT_REL AS c,
+	USER_INFO AS u
+WHERE
+	c.USER_ID = u.USER_ID
+and c.COMM_STATE = '1'
+<if test="picGroupId!=null">
+  and c.PIC_GROUP_ID = #{picGroupId,jdbcType=VARCHAR}
+</if>
+<if test="userId!=null">
+  and c.USER_ID = #{userId,jdbcType=INTEGER}
+</if>
+<if test="nikeName!=null">
+  and u.U_NICKNAME = #{nikeName,jdbcType = VARCHAR}
+</if>
+
+    <if test="qryStartDate != null">
+      and c.COMM_DATE &gt;= #{qryStartDate,jdbcType=VARCHAR}
+    </if>
+
+    <if test="qryEndDate != null">
+      and c.COMM_DATE &lt;= #{qryEndDate,jdbcType=VARCHAR}
+    </if>
+  </select>
 </mapper>
