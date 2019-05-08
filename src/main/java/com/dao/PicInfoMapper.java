@@ -5,6 +5,7 @@ import com.bo.PicInfoExample;
 import java.util.List;
 
 import com.bo.QryPhotoBean;
+import com.bo.QryPhotoDetailBean;
 import org.apache.ibatis.annotations.Param;
 
 public interface PicInfoMapper {
@@ -31,4 +32,6 @@ public interface PicInfoMapper {
     int updateByPrimaryKey(PicInfo record);
 
     List<QryPhotoBean> qryPhotoByCondition(QryPhotoBean qryPhotoBean);
+
+    QryPhotoDetailBean qryPhotoDetailByCondition(QryPhotoDetailBean qryPhotoDetailBean);
 }
