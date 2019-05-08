@@ -6,6 +6,7 @@ import com.bo.UserInfo;
 import com.bo.UserInfoDetail;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 
 /**
@@ -23,4 +24,7 @@ public interface AccountService {
 
     public UserInfoDetail qryUserInfoDetail(Integer userId)throws Exception;
 
+    public List<UserInfoDetail> qryUser(UserInfoDetail userInfoDetail) throws Exception;
+
+    public void banAccount(UserInfoDetail userInfoDetail) throws Exception;
 }

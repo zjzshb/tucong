@@ -27,6 +27,68 @@ public class UserInfoDetail {
 
     private String uCreatetime;
 
+    private Integer fansNum;
+
+    private Integer followNum;
+
+    private String qryStartDate;
+
+    private String qryEndDate;
+
+    private Integer page;
+
+    private Integer limit;
+
+    public Integer getPage() {
+        return page;
+    }
+
+    public void setPage(Integer page) {
+        this.page = page;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
+
+    public String getQryStartDate() {
+        return qryStartDate;
+    }
+
+    public void setQryStartDate(String qryStartDate) {
+        this.qryStartDate = qryStartDate;
+    }
+
+    public String getQryEndDate() {
+        return qryEndDate;
+    }
+
+    public void setQryEndDate(String qryEndDate) {
+        this.qryEndDate = qryEndDate;
+    }
+
+
+
+    public Integer getFansNum() {
+        return fansNum;
+    }
+
+    public void setFansNum(Integer fansNum) {
+        this.fansNum = fansNum;
+    }
+
+    public Integer getFollowNum() {
+        return followNum;
+    }
+
+    public void setFollowNum(Integer followNum) {
+        this.followNum = followNum;
+    }
+
     public Integer getUserId() {
         return userId;
     }

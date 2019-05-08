@@ -86,6 +86,17 @@ public class AccountServiceImpl implements AccountService {
 
     }
 
+    @Override
+    public List<UserInfoDetail> qryUser(UserInfoDetail userInfoDetail) throws Exception {
+        return accountMapper.qryUserInfoDetail(userInfoDetail);
+    }
+
+    @Override
+    public void banAccount(UserInfoDetail userInfoDetail) throws Exception {
+        accountMapper.deleteByPrimaryKey(userInfoDetail.getUserId());
+        userInfoMapper.deleteByPrimaryKey(userInfoDetail.getUserId());
+    }
+
 
 }
 

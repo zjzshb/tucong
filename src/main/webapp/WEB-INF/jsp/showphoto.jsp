@@ -57,13 +57,13 @@
 			<div id="master">
 
 				<div id="master_other">
-					<a href="" id ="nikeName"></a><br>
+					<a href="#" id ="nikeName"></a><br>
 					<div id="userId" style="display: none"></div>
 
 					<span id = "picUpDate"></span><span> 浏览量: 2885</span>
 				</div>
 				<div class="btn">
-					<a href="#">关注</a>
+					<a href="#" id = "follow">关注</a>
 				</div>
 			</div>
 			<div id="label">

@@ -30,7 +30,7 @@ public class CommentController {
         BaseResponse response = new BaseResponse(true,BUSI_SUCCESS_CODE,BUSI_SUCCESS_MESSAGE);
         System.out.println(session.getAttribute("userId"));
         String userId = String.valueOf(session.getAttribute("userId"));
-        if("".equals(userId)||userId ==null){
+        if(userId =="null"){
             response.setSuccess(false);
             response.setResultCode(BUSI_FAILURE_CODE);
             response.setResultMessage("请登录");

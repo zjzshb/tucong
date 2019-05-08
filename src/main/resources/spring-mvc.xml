@@ -24,6 +24,7 @@
     <mvc:resources mapping="/js/*.js" location="/js/" />
     <mvc:resources mapping="/img/**" location="/img/" />
     <mvc:resources mapping="/html/*.html" location="/html/" />
+    <mvc:resources mapping="/layui/**" location="/layui/" />
 
 
     <!--避免IE执行AJAX时，返回JSON出现下载文件 -->

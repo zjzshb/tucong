@@ -10,7 +10,8 @@
 <!--引入CSS -->
 <link rel="stylesheet" type="text/css" href="css/index.css">
 <!--引入js -->
-	<script typet="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script typet="text/javascript"
+			src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script src="${pageContext.request.contextPath }/js/index.js"></script>
 </head>
 <body>
@@ -34,8 +35,8 @@
 	</div>
 	<div id="selectphoto">
 		<%--<a class="photolabel" id="allphoto">全部</a>--%>
-
-	</div>	<div id="showphoto">
+	</div>
+	<div id="showphoto">
 
 		<%--<div class="photo" id="1">--%>
 			<%--<img src="http://119.23.191.210:8888/group1/M00/00/00/rBA6VVywBv-AF58_AAUTZ_gYT6I217.jpg" alt=\"失败\"/>--%>

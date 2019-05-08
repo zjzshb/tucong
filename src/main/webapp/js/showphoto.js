@@ -3,9 +3,11 @@ var loginUserId;
 var loginNikeName;
 $(document).ready(function () {
 	initUserInfo();
+	follow();
 	getParam();
 	initPhotoDetail();
 	comment();
+	nickNameClick();
 })
 
 function getParam() {
@@ -92,4 +94,32 @@ function initUserInfo() {
 		}
 	});
 	
+}
+function follow() {
+	debugger;
+	$("#follow").on("click",function () {
+		var param ={
+			userId:loginUserId,
+			userFollowId:$("#userId").html()
+		}
+
+		$.ajax({
+			url:"insertFollowRel", type:"post", data:JSON.stringify(param) , async:false, dataType:"json",contentType:"application/json", cache:false,
+			success: function (data) {
+				debugger;
+				if (data.resultCode == "000000") {
+					alert("关注成功");
+				}else {
+					alert("关注失败");
+				}
+			}
+		});
+	})
+
+}
+function nickNameClick() {
+	debugger;
+	$("#nikeName").on("click",function () {
+		window.location ="UserDtail?userId="+$("#userId").html();
+	})
 }
