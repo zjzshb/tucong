@@ -263,6 +263,7 @@ FROM
 					PIC_COMMENT_REL AS c
 				WHERE
 					c.PIC_GROUP_ID = g.PIC_GROUP_ID
+                    and c.COMM_STATE = '1'
 			) AS commentNum,
 			(
 				SELECT
@@ -294,29 +295,53 @@ FROM
 
       WHERE 1=1
       <if test="picTitle != null">
-          and PIC_TITLE = #{picTitle jdbcType=VARCHAR}
+          and picTitle = #{picTitle,jdbcType=VARCHAR}
       </if>
       <if test="userId != null">
-          and USER_ID = #{userId jdbcType=INTEGER}
+          and userId = #{userId,jdbcType=INTEGER}
       </if>
       <if test="picLabelName != null">
-          and PIC_LABEL_NAME = #{picLabelName jdbcType=VARCHAR}
+          and picLabelName = #{picLabelName,jdbcType=VARCHAR}
       </if>
     <if test="picLabelId != null">
-      and PIC_LABEL_ID = #{picLabelId jdbcType=INTEGER}
+      and picLabelId = #{picLabelId,jdbcType=INTEGER}
     </if>
     <if test="qryStartDate != null">
-      and PIC_UP_DATE &gt;= #{qryStartDate dbcType=VARCHAR}
+      and picUpDate &gt;= #{qryStartDate,jdbcType=VARCHAR}
     </if>
 
     <if test="qryEndDate != null">
-      and PIC_UP_DATE &lt;= #{qryEndDate dbcType=VARCHAR}
+      and picUpDate &lt;= #{qryEndDate,jdbcType=VARCHAR}
     </if>
+    <if test="picGroupState != null">
+      and picGroupState = #{picGroupState,jdbcType=VARCHAR}
+    </if>
+
     <if test="start != null and end !=null " >
-      LIMIT #{start jdbcType=INTEGER} ,#{end jdbcType=INTEGER};
+      LIMIT #{start,jdbcType=INTEGER} ,#{end,jdbcType=INTEGER};
     </if>
 
 
+
+  </select>
+
+  <select id="qryPhotoDetailByCondition" parameterType="com.bo.QryPhotoDetailBean" resultType="com.bo.QryPhotoDetailBean">
+    SELECT
+      p.PIC_GROUP_ID AS groupId,
+      p.PIC_DESCRIBE AS picDescribe,
+      p.PIC_UP_DATE AS picUpDate,
+      p.USER_ID AS userId,
+      p.PIC_TITLE AS picTitle,
+      u.U_NICKNAME AS nikeName
+    FROM
+      PIC_GROUP_INFO AS p,
+      USER_INFO AS u
+    WHERE
+      p.USER_ID = u.USER_ID
+      AND p.PIC_GROUP_STATE = '1'
+    <if test="groupId!=null">
+      AND  p.PIC_GROUP_ID = #{groupId,jdbcType=INTEGER}
+    </if>
 
   </select>
 </mapper>

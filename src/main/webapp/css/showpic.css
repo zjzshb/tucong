@@ -121,7 +121,7 @@ footer:hover .jumpnext,footer:hover .jumppre{
     height: 45px;border-radius: 50%;vertical-align: middle;margin-left: 10px;
 }
 #master_other{
-    line-height: 34px;position: absolute;top: 0;left: 80px;
+    line-height: 34px;position: absolute;top: 0;left: 10px;
 }
 #master_other span,#master_other a{
     font-size:12px;color: #f4f4f4;
@@ -181,7 +181,7 @@ footer:hover .jumpnext,footer:hover .jumppre{
     height: 30px;border-radius: 50%;
 }
 .the-list{
-    width: 245px;float: right;padding: 0 10px;
+    width: 260px;float: right;padding: 0 10px;
 }
 .the-list a,.the-list span{
     color: #a3a8aa;font-size: 14px;

@@ -3,6 +3,8 @@ package com.dao;
 import com.bo.Account;
 import com.bo.AccountExample;
 import java.util.List;
+
+import com.bo.UserInfoDetail;
 import org.apache.ibatis.annotations.Param;
 
 public interface AccountMapper {
@@ -31,5 +33,7 @@ public interface AccountMapper {
     int checkAccountByUserName(Account account);
 
     int checkAccountByPhone (Account account);
+
+    List<UserInfoDetail> qryUserInfoDetail(UserInfoDetail userInfoDetail);
 
 }

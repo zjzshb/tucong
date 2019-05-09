@@ -2,10 +2,12 @@ package com.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bo.Account;
+import com.bo.UserInfoDetail;
 import com.bo.UserRegisterReq;
 import com.miaodiyun.httpApiDemo.IndustrySMS;
 import com.service.interfaces.AccountService;
 import com.vo.BaseResponse;
+import com.vo.LayuiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import java.util.List;
 
 import static com.vo.BaseCode.*;
 
@@ -136,4 +140,56 @@ public class AccountController {
 //        return response;
 //    }
 
+    @RequestMapping(value = "gerUserInfo" ,method = RequestMethod.POST)
+    @ResponseBody
+    private BaseResponse<UserInfoDetail> gerUserInfo(HttpSession session){
+        BaseResponse response = new BaseResponse(true,BUSI_SUCCESS_CODE,BUSI_SUCCESS_MESSAGE);
+        Integer userId = (Integer) session.getAttribute("userId");
+        try {
+            UserInfoDetail result = accountService.qryUserInfoDetail(userId);
+            response.setResult(result);
+        } catch (Exception e) {
+            response.setSuccess(false);
+            response.setResultCode(BUSI_FAILURE_CODE);
+            response.setResultMessage("初始化用户信息失败");
+        }
+        return response;
+    }
+
+    @RequestMapping(value = "qryAccountInfo" ,method = RequestMethod.POST)
+    @ResponseBody
+    private LayuiResponse<UserInfoDetail> qryAccountInfo(@RequestBody UserInfoDetail userInfoDetail){
+        LayuiResponse response = new LayuiResponse(0,"成功");
+        try {
+           List<UserInfoDetail>  result = accountService.qryUser(userInfoDetail);
+            response.setData(result);
+            response.setCount(100);
+        } catch (Exception e) {
+            response.setCode(999);
+            response.setMsg("失败");
+            return response;
+        }
+        return response;
+    }
+
+    @RequestMapping(value = "banAccount" ,method = RequestMethod.POST)
+    @ResponseBody
+    private LayuiResponse banAccount(@RequestBody UserInfoDetail userInfoDetail){
+        LayuiResponse response = new LayuiResponse(0,"删除成功");
+        try {
+            accountService.banAccount(userInfoDetail);
+        } catch (Exception e) {
+            response.setCode(999);
+            response.setMsg("失败");
+            return response;
+        }
+        return response;
+    }
+
+    @RequestMapping(value = "/UserDtail")
+    public ModelAndView UserDtail (){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("userInfo");
+        return mv;
+    }
 }

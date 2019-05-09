@@ -6,12 +6,9 @@
 <head>
 	<script typet="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/photoupload.css">
-
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/userpage.css">
 <!-- tou  -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/css/fileupPage.css">
-
-
     <script src="${pageContext.request.contextPath }/js/picupload.js"></script>
 	<script src="${pageContext.request.contextPath}/js/ajaxfileupload.js"></script>
 <title>Title</title>

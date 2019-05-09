@@ -32,4 +32,8 @@ public class PageController {
     public String goShowPhoto(){
         return "showphoto";
     }
+    @RequestMapping("manager")
+    public String manager(){
+        return "manager";
+    }
 }

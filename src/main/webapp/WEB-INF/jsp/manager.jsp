@@ -1,12 +1,18 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"
+         contentType="text/html; charset=utf-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>layui</title>
+    <title>管理页面</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+    <script src="${pageContext.request.contextPath }/js/manager.js"></script>
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
 <body>
@@ -16,20 +22,20 @@
             <a href="javascript:;">默认展开</a>
             <dl class="layui-nav-child">
                 <dd>
-                    <a data-url="accountManager" data-title="account" data-id="11" href="#" class="site-demo-active"
-                       data-type="tabAdd">account</a>
+                    <a data-url="${pageContext.request.contextPath }/html/accountManager" data-title="account" data-id="1" href="#" class="site-demo-active"
+                       data-type="tabAdd">账号管理</a>
                 </dd>
                 <dd>
-                    <a data-url="commetManager" data-title="comment" data-id="22" href="#" class="site-demo-active"
-                       data-type="tabAdd">comment</a>
+                    <a data-url="${pageContext.request.contextPath }/html/commetManager" data-title="comment" data-id="2" href="#" class="site-demo-active"
+                       data-type="tabAdd">评论管理</a>
                 </dd>
                 <dd>
-                    <a data-url="likeManager" data-title="like" data-id="22" href="#" class="site-demo-active"
-                       data-type="tabAdd">like</a>
+                    <a data-url="${pageContext.request.contextPath }/html/likeManager" data-title="like" data-id="3" href="#" class="site-demo-active"
+                       data-type="tabAdd">关注管理</a>
                 </dd>
                 <dd>
-                    <a data-url="picManager" data-title="pic" data-id="22" href="#" class="site-demo-active"
-                       data-type="tabAdd">pic</a>
+                    <a data-url="${pageContext.request.contextPath }/html/picManager" data-title="pic" data-id="4" href="#" class="site-demo-active"
+                       data-type="tabAdd">图片管理</a>
                 </dd>
             </dl>
         </li>
