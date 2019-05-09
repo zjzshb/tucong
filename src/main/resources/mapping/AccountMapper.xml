@@ -237,13 +237,14 @@
     u.U_CREATETIME as uCreatetime,
     (SELECT COUNT(*) from USER_FOLLOW_REL as f where f.USER_ID = a.USER_ID) as followNum,
     (SELECT COUNT(*) from USER_FOLLOW_REL as f where f.USER_FOLLOW_ID = a.USER_ID) as fansNum
+
     FROM
     ACCOUNT AS a,
     USER_INFO AS u
     WHERE
     a.USER_ID = u.USER_ID
-	<if test="userId!=null and userId !=0">
-      AND a.USER_ID = #{userId,jdbcType=TINYINT}
+    <if test="userId!=null and userId !=0">
+      AND a.USER_ID = #{userId,jdbcType=INTEGER}
     </if>
     <if test="userName!=null and userName!=''">
       AND a.USER_NAME = #{userName,jdbcType=VARCHAR}
@@ -258,5 +259,48 @@
     <if test="qryEndDate != null and qryEndDate!=''">
       and u.U_CREATETIME &lt;= #{qryEndDate,jdbcType=VARCHAR}
     </if>
+    <if test="start != null and end !=null " >
+      LIMIT #{start,jdbcType=INTEGER} ,#{end,jdbcType=INTEGER};
+    </if>
+  </select>
+  <select id="qryUserInfoDetailCount" parameterType="com.bo.UserInfoDetail" resultType="java.lang.Integer">
+  SELECT count(*)  from (
+    SELECT
+    a.USER_ID as userId,
+    a.USER_NAME AS userName,
+    a.USER_PHONE as userPhone,
+    a.USER_ROOT as userRoot,
+    u.U_ADDRESS as uAddress,
+    u.U_DIS as uDis,
+    u.U_BG as uBg,
+    u.U_TX as uTx,
+    u.U_SEX as uSex,
+    u.U_NICKNAME as uNickname,
+    u.U_CREATETIME as uCreatetime,
+    (SELECT COUNT(*) from USER_FOLLOW_REL as f where f.USER_ID = a.USER_ID) as followNum,
+    (SELECT COUNT(*) from USER_FOLLOW_REL as f where f.USER_FOLLOW_ID = a.USER_ID) as fansNum
+
+    FROM
+    ACCOUNT AS a,
+    USER_INFO AS u
+    WHERE
+    a.USER_ID = u.USER_ID
+    <if test="userId!=null and userId !=0">
+      AND a.USER_ID = #{userId,jdbcType=INTEGER}
+    </if>
+    <if test="userName!=null and userName!=''">
+      AND a.USER_NAME = #{userName,jdbcType=VARCHAR}
+    </if>
+    <if test="uNickname!=null and uNickname!=''">
+      AND u.U_NICKNAME = #{uNickname,jdbcType=VARCHAR}
+    </if>
+    <if test="qryStartDate != null and qryStartDate!=''">
+      and u.U_CREATETIME &gt;= #{qryStartDate,jdbcType=VARCHAR}
+    </if>
+
+    <if test="qryEndDate != null and qryEndDate!=''">
+      and u.U_CREATETIME &lt;= #{qryEndDate,jdbcType=VARCHAR}
+    </if>
+    ) as t
   </select>
 </mapper>

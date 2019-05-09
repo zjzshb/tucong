@@ -1,12 +1,13 @@
 $(document).ready(function () {
     initTable();
+    qry();
 })
 function initTable() {
     
     var param = {
         userId:$("#userId").val(),
         userName:$("#userName").val(),
-        nickName:$("#nickName").val(),
+        uNickname:$("#nickName").val(),
         qryStartDate:$("#qryStartDate").val(),
         qryEndDate:$("#qryEndDate").val()
     }
@@ -84,8 +85,7 @@ function initTable() {
                     }
                 ]],
                 page: true,
-                limit: 20,
-                limits: 50,
+                limit: 5
             });
         //监听行工具事件
         table.on('tool(test)', function (obj) {
@@ -107,4 +107,9 @@ function initTable() {
             }
         });
     });
+}
+function qry() {
+    $("#qry").on("click",function () {
+        initTable();
+    })
 }

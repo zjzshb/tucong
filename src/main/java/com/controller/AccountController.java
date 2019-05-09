@@ -6,6 +6,7 @@ import com.bo.UserInfoDetail;
 import com.bo.UserRegisterReq;
 import com.miaodiyun.httpApiDemo.IndustrySMS;
 import com.service.interfaces.AccountService;
+import com.utils.DateUtils;
 import com.vo.BaseResponse;
 import com.vo.LayuiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.xml.registry.infomodel.User;
 
 import java.util.List;
 
@@ -160,10 +162,13 @@ public class AccountController {
     @ResponseBody
     private LayuiResponse<UserInfoDetail> qryAccountInfo(@RequestBody UserInfoDetail userInfoDetail){
         LayuiResponse response = new LayuiResponse(0,"成功");
+
         try {
-           List<UserInfoDetail>  result = accountService.qryUser(userInfoDetail);
+            this.setCondition(userInfoDetail);
+            List<UserInfoDetail>  result = accountService.qryUser(userInfoDetail);
+            Integer count = accountService.qryUserCount(userInfoDetail);
             response.setData(result);
-            response.setCount(100);
+            response.setCount(count);
         } catch (Exception e) {
             response.setCode(999);
             response.setMsg("失败");
@@ -191,5 +196,10 @@ public class AccountController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("userInfo");
         return mv;
+    }
+    private void setCondition( UserInfoDetail userInfoDetail)throws Exception{
+        userInfoDetail.setPage(userInfoDetail.getPage()-1);
+        userInfoDetail.setStart(userInfoDetail.getPage()*userInfoDetail.getLimit());
+        userInfoDetail.setEnd(userInfoDetail.getPage()*userInfoDetail.getLimit()+userInfoDetail.getLimit());
     }
 }
