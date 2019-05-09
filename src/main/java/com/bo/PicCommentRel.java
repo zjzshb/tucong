@@ -1,6 +1,8 @@
 package com.bo;
 
 public class PicCommentRel {
+    private Integer commentId;
+
     private Integer picGroupId;
 
     private Integer userId;
@@ -10,6 +12,14 @@ public class PicCommentRel {
     private String commDate;
 
     private String commState;
+
+    public Integer getCommentId() {
+        return commentId;
+    }
+
+    public void setCommentId(Integer commentId) {
+        this.commentId = commentId;
+    }
 
     public Integer getPicGroupId() {
         return picGroupId;

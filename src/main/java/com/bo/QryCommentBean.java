@@ -4,6 +4,8 @@ package com.bo;
  * Created by John on 2019/5/8.
  */
 public class QryCommentBean {
+    private Integer commentId;
+
     private Integer picGroupId;
 
     private Integer userId;
@@ -19,6 +21,44 @@ public class QryCommentBean {
     private String qryStartDate;
 
     private String qryEndDate;
+
+    private Integer page;
+
+    private Integer limit;
+
+    private Integer start;
+
+    public Integer getCommentId() {
+        return commentId;
+    }
+
+    public void setCommentId(Integer commentId) {
+        this.commentId = commentId;
+    }
+
+    public Integer getPage() {
+        return page;
+    }
+
+    public void setPage(Integer page) {
+        this.page = page;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
+
+    public Integer getStart() {
+        return start;
+    }
+
+    public void setStart(Integer start) {
+        this.start = start;
+    }
 
     public String getQryStartDate() {
         return qryStartDate;

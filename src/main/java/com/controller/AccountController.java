@@ -40,7 +40,6 @@ public class AccountController {
     private ModelAndView doLogin(HttpServletRequest request){
         ModelAndView  mv = new ModelAndView();
         try {
-            mv.setViewName("redirect:/");
             Account account = new Account();
             account.setUserName(request.getParameter("userName"));
             account.setUserPwd(request.getParameter("userPwd"));
@@ -51,11 +50,17 @@ public class AccountController {
                 mv.addObject("messege","账号或密码错误");
             }
 
-            String nickName = accountService.queryUserInfoById(userId).getuNickname();
+            UserInfoDetail result = accountService.qryUserInfoDetail(userId);
 
             HttpSession session = request.getSession();
             session.setAttribute("userId" ,userId );
-            session.setAttribute("userNickName" ,nickName );
+            session.setAttribute("userNickName" ,result.getuNickname());
+            session.setAttribute("root",result.getUserRoot());
+            if (result.getUserRoot() == 1){
+                mv.setViewName("manager");
+            }else {
+                mv.setViewName("redirect:/");
+            }
 
         }catch (Exception e){
             mv.setViewName("login");
@@ -63,6 +68,9 @@ public class AccountController {
         }
         return mv;
     }
+
+
+
     @RequestMapping(value = "/quitLogin")
     private ModelAndView quitLogin(HttpSession session){
         session.removeAttribute("userId");
@@ -144,7 +152,7 @@ public class AccountController {
 
     @RequestMapping(value = "gerUserInfo" ,method = RequestMethod.POST)
     @ResponseBody
-    private BaseResponse<UserInfoDetail> gerUserInfo(HttpSession session){
+    private BaseResponse<UserInfoDetail> gerUerInfo(HttpSession session){
         BaseResponse response = new BaseResponse(true,BUSI_SUCCESS_CODE,BUSI_SUCCESS_MESSAGE);
         Integer userId = (Integer) session.getAttribute("userId");
         try {

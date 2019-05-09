@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.PicCommentRelMapper">
   <resultMap id="BaseResultMap" type="com.bo.PicCommentRel">
-    <id column="PIC_GROUP_ID" jdbcType="INTEGER" property="picGroupId" />
+    <id column="COMMENT_ID" jdbcType="INTEGER" property="commentId" />
+    <result column="PIC_GROUP_ID" jdbcType="INTEGER" property="picGroupId" />
     <result column="USER_ID" jdbcType="INTEGER" property="userId" />
     <result column="COMM_MAIN" jdbcType="VARCHAR" property="commMain" />
     <result column="COMM_DATE" jdbcType="VARCHAR" property="commDate" />
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    PIC_GROUP_ID, USER_ID, COMM_MAIN, COMM_DATE, COMM_STATE
+    COMMENT_ID, PIC_GROUP_ID, USER_ID, COMM_MAIN, COMM_DATE, COMM_STATE
   </sql>
   <select id="selectByExample" parameterType="com.bo.PicCommentRelExample" resultMap="BaseResultMap">
     select
@@ -88,11 +89,11 @@
     select 
     <include refid="Base_Column_List" />
     from PIC_COMMENT_REL
-    where PIC_GROUP_ID = #{picGroupId,jdbcType=INTEGER}
+    where COMMENT_ID = #{commentId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from PIC_COMMENT_REL
-    where PIC_GROUP_ID = #{picGroupId,jdbcType=INTEGER}
+    where COMMENT_ID = #{commentId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.bo.PicCommentRelExample">
     delete from PIC_COMMENT_REL
@@ -101,14 +102,19 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.bo.PicCommentRel">
-    insert into PIC_COMMENT_REL (PIC_GROUP_ID, USER_ID, COMM_MAIN, 
-      COMM_DATE, COMM_STATE)
-    values (#{picGroupId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{commMain,jdbcType=VARCHAR}, 
-      #{commDate,jdbcType=VARCHAR}, #{commState,jdbcType=VARCHAR})
+    insert into PIC_COMMENT_REL (COMMENT_ID, PIC_GROUP_ID, USER_ID, 
+      COMM_MAIN, COMM_DATE, COMM_STATE
+      )
+    values (#{commentId,jdbcType=INTEGER}, #{picGroupId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{commMain,jdbcType=VARCHAR}, #{commDate,jdbcType=VARCHAR}, #{commState,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.bo.PicCommentRel">
     insert into PIC_COMMENT_REL
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commentId != null">
+        COMMENT_ID,
+      </if>
       <if test="picGroupId != null">
         PIC_GROUP_ID,
       </if>
@@ -126,6 +132,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commentId != null">
+        #{commentId,jdbcType=INTEGER},
+      </if>
       <if test="picGroupId != null">
         #{picGroupId,jdbcType=INTEGER},
       </if>
@@ -152,6 +161,9 @@
   <update id="updateByExampleSelective" parameterType="map">
     update PIC_COMMENT_REL
     <set>
+      <if test="record.commentId != null">
+        COMMENT_ID = #{record.commentId,jdbcType=INTEGER},
+      </if>
       <if test="record.picGroupId != null">
         PIC_GROUP_ID = #{record.picGroupId,jdbcType=INTEGER},
       </if>
@@ -174,7 +186,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update PIC_COMMENT_REL
-    set PIC_GROUP_ID = #{record.picGroupId,jdbcType=INTEGER},
+    set COMMENT_ID = #{record.commentId,jdbcType=INTEGER},
+      PIC_GROUP_ID = #{record.picGroupId,jdbcType=INTEGER},
       USER_ID = #{record.userId,jdbcType=INTEGER},
       COMM_MAIN = #{record.commMain,jdbcType=VARCHAR},
       COMM_DATE = #{record.commDate,jdbcType=VARCHAR},
@@ -186,6 +199,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.bo.PicCommentRel">
     update PIC_COMMENT_REL
     <set>
+      <if test="picGroupId != null">
+        PIC_GROUP_ID = #{picGroupId,jdbcType=INTEGER},
+      </if>
       <if test="userId != null">
         USER_ID = #{userId,jdbcType=INTEGER},
       </if>
@@ -199,47 +215,85 @@
         COMM_STATE = #{commState,jdbcType=VARCHAR},
       </if>
     </set>
-    where PIC_GROUP_ID = #{picGroupId,jdbcType=INTEGER}
+    where COMMENT_ID = #{commentId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.bo.PicCommentRel">
     update PIC_COMMENT_REL
-    set USER_ID = #{userId,jdbcType=INTEGER},
+    set PIC_GROUP_ID = #{picGroupId,jdbcType=INTEGER},
+      USER_ID = #{userId,jdbcType=INTEGER},
       COMM_MAIN = #{commMain,jdbcType=VARCHAR},
       COMM_DATE = #{commDate,jdbcType=VARCHAR},
       COMM_STATE = #{commState,jdbcType=VARCHAR}
-    where PIC_GROUP_ID = #{picGroupId,jdbcType=INTEGER}
+    where COMMENT_ID = #{commentId,jdbcType=INTEGER}
   </update>
-
   <select id="qryCommentByCondition" parameterType="com.bo.QryCommentBean" resultType="com.bo.QryCommentBean">
     SELECT
-	c.PIC_GROUP_ID AS picGroupId,
-c.USER_ID AS userId,
-c.COMM_MAIN AS commMain,
-c.COMM_DATE AS commDate,
-c.COMM_STATE AS commState,
-u.U_NICKNAME AS nikeName
-FROM
-	PIC_COMMENT_REL AS c,
-	USER_INFO AS u
-WHERE
-	c.USER_ID = u.USER_ID
-and c.COMM_STATE = '1'
-<if test="picGroupId!=null">
-  and c.PIC_GROUP_ID = #{picGroupId,jdbcType=VARCHAR}
-</if>
-<if test="userId!=null">
-  and c.USER_ID = #{userId,jdbcType=INTEGER}
-</if>
-<if test="nikeName!=null">
-  and u.U_NICKNAME = #{nikeName,jdbcType = VARCHAR}
-</if>
+    c.COMMENT_ID as commentId,
+    c.PIC_GROUP_ID AS picGroupId,
+    c.USER_ID AS userId,
+    c.COMM_MAIN AS commMain,
+    c.COMM_DATE AS commDate,
+    c.COMM_STATE AS commState,
+    u.U_NICKNAME AS nikeName
+    FROM
+    PIC_COMMENT_REL AS c,
+    USER_INFO AS u
+    WHERE
+    c.USER_ID = u.USER_ID
+    and c.COMM_STATE = '1'
+    <if test="picGroupId!=null and picGroupId!=''">
+      and c.PIC_GROUP_ID = #{picGroupId,jdbcType=VARCHAR}
+    </if>
+    <if test="userId!=null and userId!=0">
+      and c.USER_ID = #{userId,jdbcType=INTEGER}
+    </if>
+    <if test="nikeName!=null and nikeName!=''">
+      and u.U_NICKNAME = #{nikeName,jdbcType = VARCHAR}
+    </if>
 
-    <if test="qryStartDate != null">
+    <if test="qryStartDate != null and qryStartDate!=''">
       and c.COMM_DATE &gt;= #{qryStartDate,jdbcType=VARCHAR}
     </if>
 
-    <if test="qryEndDate != null">
+    <if test="qryEndDate != null and qryEndDate!=''">
       and c.COMM_DATE &lt;= #{qryEndDate,jdbcType=VARCHAR}
     </if>
+    <if test="start != null and limit !=null " >
+      LIMIT #{start,jdbcType=INTEGER} ,#{limit,jdbcType=INTEGER};
+    </if>
   </select>
+  <select id="qryCommentByConditionCount" parameterType="com.bo.QryCommentBean" resultType="java.lang.Integer">
+    SELECT
+    COUNT(*)
+    FROM
+    PIC_COMMENT_REL AS c,
+    USER_INFO AS u
+    WHERE
+    c.USER_ID = u.USER_ID
+    and c.COMM_STATE = '1'
+    <if test="picGroupId!=null and picGroupId!=''">
+      and c.PIC_GROUP_ID = #{picGroupId,jdbcType=VARCHAR}
+    </if>
+    <if test="userId!=null and userId =0">
+      and c.USER_ID = #{userId,jdbcType=INTEGER}
+    </if>
+    <if test="nikeName!=null and nikeName!=''">
+      and u.U_NICKNAME = #{nikeName,jdbcType = VARCHAR}
+    </if>
+
+    <if test="qryStartDate != null and qryStartDate!=''">
+      and c.COMM_DATE &gt;= #{qryStartDate,jdbcType=VARCHAR}
+    </if>
+
+    <if test="qryEndDate != null and qryEndDate!=''">
+      and c.COMM_DATE &lt;= #{qryEndDate,jdbcType=VARCHAR}
+    </if>
+
+  </select>
+
+
+
+
+
+
 </mapper>

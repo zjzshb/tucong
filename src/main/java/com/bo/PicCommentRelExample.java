@@ -104,6 +104,66 @@ public class PicCommentRelExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        public Criteria andCommentIdIsNull() {
+            addCriterion("COMMENT_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentIdIsNotNull() {
+            addCriterion("COMMENT_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentIdEqualTo(Integer value) {
+            addCriterion("COMMENT_ID =", value, "commentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentIdNotEqualTo(Integer value) {
+            addCriterion("COMMENT_ID <>", value, "commentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentIdGreaterThan(Integer value) {
+            addCriterion("COMMENT_ID >", value, "commentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("COMMENT_ID >=", value, "commentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentIdLessThan(Integer value) {
+            addCriterion("COMMENT_ID <", value, "commentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentIdLessThanOrEqualTo(Integer value) {
+            addCriterion("COMMENT_ID <=", value, "commentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentIdIn(List<Integer> values) {
+            addCriterion("COMMENT_ID in", values, "commentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentIdNotIn(List<Integer> values) {
+            addCriterion("COMMENT_ID not in", values, "commentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentIdBetween(Integer value1, Integer value2) {
+            addCriterion("COMMENT_ID between", value1, value2, "commentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("COMMENT_ID not between", value1, value2, "commentId");
+            return (Criteria) this;
+        }
+
         public Criteria andPicGroupIdIsNull() {
             addCriterion("PIC_GROUP_ID is null");
             return (Criteria) this;

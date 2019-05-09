@@ -18,6 +18,9 @@ public interface PhotoService {
 
     public List<QryPhotoBean> qryPhotoByCondition (QryPhotoBean qryPhotoBean) throws Exception;
 
+    public Integer qryPhotoByConditionCount(QryPhotoBean qryPhotoBean)throws Exception;
+
     public QryPhotoDetailBean qryPhotoDetailByCondition (QryPhotoDetailBean qryPhotoDetailBean)throws Exception;
 
+    public void banPic (Integer groupId) throws Exception;
 }

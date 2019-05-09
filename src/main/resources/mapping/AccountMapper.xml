@@ -259,8 +259,8 @@
     <if test="qryEndDate != null and qryEndDate!=''">
       and u.U_CREATETIME &lt;= #{qryEndDate,jdbcType=VARCHAR}
     </if>
-    <if test="start != null and end !=null " >
-      LIMIT #{start,jdbcType=INTEGER} ,#{end,jdbcType=INTEGER};
+    <if test="start != null and limit !=null " >
+      LIMIT #{start,jdbcType=INTEGER} ,#{limit,jdbcType=INTEGER};
     </if>
   </select>
   <select id="qryUserInfoDetailCount" parameterType="com.bo.UserInfoDetail" resultType="java.lang.Integer">

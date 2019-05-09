@@ -8,22 +8,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="../layui/css/layui.css" media="all">
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <script typet="text/javascript"
+            src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript"
+            src="/js/commentManager.js"></script>
 </head>
 <body>
 <form class="layui-form" action="">
 
     <div class="layui-form-item layui-inline">
-        <label class="layui-form-label">用户名</label>
+        <label class="layui-form-label">用户ID</label>
         <div class="layui-input-inline">
-            <input type="text" name="username" required placeholder="请输入用户名"
+            <input type="text" id = "userId" required placeholder="请输入用户ID"
                    autocomplete="off"
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item layui-inline">
-        <label class="layui-form-label">昵称</label>
+        <label class="layui-form-label">用户昵称</label>
         <div class="layui-input-inline">
-            <input type="text" name="nickname" required placeholder="请输入昵称"
+            <input type="text" id = "nikeName" required placeholder="请输入昵称"
                    autocomplete="off"
                    class="layui-input">
         </div>
@@ -31,133 +35,41 @@
     <div class="layui-form-item layui-inline">
         <label class="layui-form-label">照片ID</label>
         <div class="layui-input-inline">
-            <input type="text" name="nickname" required placeholder="请输入昵称"
+            <input type="text" id = "picGroupId" required placeholder="请输入照片ID"
                    autocomplete="off"
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">评论时间</label>
-        <div class="layui-input-inline" style="width: 100px;">
-            <input type="text" class="layui-input" id="fromTime" placeholder="起始时间" name="fromTime">
+        <div class="layui-input-inline" style="width: 200px;">
+            <input type="date" id="qryStartDate" class="layui-input" id="fromTime" placeholder="起始时间" name="fromTime">
         </div>
         <div class="layui-form-mid">-</div>
-        <div class="layui-input-inline" style="width: 100px;">
-            <input type="text" class="layui-input" id="toTime" placeholder="结束时间" name="toTime">
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <div class="layui-input-block">
-            <button class="layui-btn" lay-submit lay-filter="submitThis">立即提交</button>
-            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        <div class="layui-input-inline" style="width: 200px;">
+            <input type="date"  id="qryEndDate" class="layui-input" id="toTime" placeholder="结束时间" name="toTime">
         </div>
     </div>
 </form>
-<table class="layui-hide" id="test" lay-filter="test"></table>
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        <button class="layui-btn" id="qry" lay-submit lay-filter="submitThis">查询</button>
+
+    </div>
+</div>
+<table class="layui-hide" id="commentInfo" lay-filter="test"></table>
 
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
     </div>
 </script>
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="ban">封禁</a>
 </script>
 
 
 <script src="../layui/layui.js" charset="utf-8"></script>
 
-<script>
-    layui.use('table', function () {
-        var table = layui.table;
-
-        table.render({
-            elem: '#test',
-            url: '../json/HelloWorld.txt',
-            title: '用户数据表',
-            totalRow: true,
-            cols: [[
-                {
-                    field: 'id',
-                    title: 'ID',
-                    width: 80,
-                    fixed: 'left',
-                    unresize: true,
-                    sort: true,
-                    totalRowText: 'id',
-                    hide: true
-                },
-                {
-                    field: 'userName',
-                    title: '用户名',
-                    width: 120,
-                    edit: 'text'
-                },
-                {
-                    field: 'nickName',
-                    title: '用户昵称',
-                    width: 120,
-                    edit: 'text'
-                },
-                {
-                    field: 'date',
-                    title: '评论时间',
-                    width: 120,
-                    edit: 'text'
-                },
-                {
-                    field: '姓名',
-                    title: '评论类容',
-                    width: 120,
-                    edit: 'text'
-                },
-                {
-                    fixed: '性别',
-                    title: '操作',
-                    toolbar: '#barDemo',
-                    width: 150
-                }
-            ]],
-            page: true,
-            limit: 20,
-            limits: 50,
-        });
-        //监听行工具事件
-        table.on('tool(test)', function (obj) {
-            var data = obj.data;
-            //console.log(obj)
-            if (obj.event === 'ban') {
-                // ban
-                console.log(data);
-            } else if (obj.event === 'edit') {
-                //
-            }
-        });
-    });
-    layui.use(['form', 'layedit', 'laydate'], function () {
-        var form = layui.form
-                , layer = layui.layer
-                , layedit = layui.layedit
-                , laydate = layui.laydate;
-
-        //日期
-        laydate.render({
-            elem: '#fromTime'
-        });
-        laydate.render({
-            elem: '#toTime'
-        });
-
-        //监听提交
-        form.on('submit(submitThis)', function (data) {
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
-            return false;
-        });
-    });
-</script>
 
 </body>
 </html>

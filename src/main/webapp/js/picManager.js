@@ -3,21 +3,21 @@ $(document).ready(function () {
     qry();
 })
 function initTable() {
-    
     var param = {
         userId:$("#userId").val(),
-        userName:$("#userName").val(),
-        uNickname:$("#nickName").val(),
+        uNickname:$("#uNickname").val(),
+        picGroupId:$("#picGroupId").val(),
+        picTitle:$("#picTitle").val(),
+        qryEndDate:$("#qryEndDate").val(),
         qryStartDate:$("#qryStartDate").val(),
         qryEndDate:$("#qryEndDate").val()
     }
-    
     layui.use('table', function () {
         var table = layui.table;
         var userId =
             table.render({
-                elem: '#accountInfo',
-                url: '../qryAccountInfo',
+                elem: '#picInfo',
+                url: '../photoManager',
                 contentType: 'application/json',
                 method:"post",
                 title: '用户数据表',
@@ -25,14 +25,19 @@ function initTable() {
                 totalRow: true,
                 cols: [[
                     {
-                        field: 'userId',
-                        title: 'ID',
+                        field: 'picGroupId',
+                        title: '图片ID',
                         width: 80,
-                        fixed: 'left',
+                        fixed: 'left'
                     },
                     {
-                        field: 'userName',
-                        title: '用户名',
+                        field: 'picTitle',
+                        title: '图片标题',
+                        width: 120
+                    },
+                    {
+                        field: 'userId',
+                        title: '用户ID',
                         width: 120
                     },
                     {
@@ -41,33 +46,24 @@ function initTable() {
                         width: 120
                     },
                     {
-                        field: 'userPhone',
-                        title: '电话',
+                        field: 'picLabelName',
+                        title: '标签名',
                         width: 120
                     },
                     {
-                        field: 'uAddress',
-                        title: '地址',
+                        field: 'picDescribe',
+                        title: '图片描述',
                         width: 120
                     },
                     {
-                        field: 'uDis',
-                        title: '用户描述',
+                        field: 'commentNum',
+                        title: '评论数',
                         width: 120
+
                     },
                     {
-                        field: 'uSex',
-                        title: '性别',
-                        width: 120
-                    },
-                    {
-                        field: 'uCreatetime',
-                        title: '创建时间',
-                        width: 120
-                    },
-                    {
-                        field: 'fansNum',
-                        title: '粉丝数',
+                        field: 'picUpDate',
+                        title: '上传时间',
                         width: 120
                     },
                     {
@@ -85,17 +81,20 @@ function initTable() {
             if (obj.event === 'ban') {
                 // ban
                 var banParam = {
-                    userId : data.userId
+                    picGroupId : data.picGroupId
                 }
+                debugger;
                 $.ajax({
-                    url:"../banAccount", type:"post", data:JSON.stringify(banParam) , async:false, dataType:"json",contentType:"application/json", cache:false,
+                    url:"../banPic", type:"post", data:JSON.stringify(banParam) , async:false, dataType:"json",contentType:"application/json", cache:false,
                     success: function (data) {
-                       if(data.code = 0){
-                           debugger;
-                           layer.msg(data.msg);
-                       }
+                        if(data.code = 0){
+                            alert(data.msg);
+                        }
                     }
                 });
+            }else if(obj.event === "detail"){
+                // window.location ="../PhotoDtail?picGourpId="+data.picGroupId;
+                window.open("../PhotoDtail?picGourpId="+data.picGroupId);
             }
         });
     });

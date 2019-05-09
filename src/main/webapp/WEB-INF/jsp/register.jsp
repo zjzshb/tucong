@@ -8,7 +8,6 @@
 	src="https://code.jquery.com/jquery-3.3.1.js"></script>
    <script type="text/javascript" src="${pageContext.request.contextPath }/js/register.js"></script>
    <script type="text/javascript" src="${pageContext.request.contextPath }/js/util.js"></script>
-	
 
   </head>
   

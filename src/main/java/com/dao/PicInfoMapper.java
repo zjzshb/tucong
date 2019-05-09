@@ -33,5 +33,7 @@ public interface PicInfoMapper {
 
     List<QryPhotoBean> qryPhotoByCondition(QryPhotoBean qryPhotoBean);
 
+    Integer qryPhotoByConditionCount(QryPhotoBean qryPhotoBean);
+
     QryPhotoDetailBean qryPhotoDetailByCondition(QryPhotoDetailBean qryPhotoDetailBean);
 }

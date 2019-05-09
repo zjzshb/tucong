@@ -1,23 +1,31 @@
+/**
+ * Created by John on 2019/5/9.
+ */
 $(document).ready(function () {
     initTable();
     qry();
 })
+function qry() {
+    $("#qry").on("click",function () {
+        initTable();
+    })
+}
 function initTable() {
-    
+    debugger;
     var param = {
         userId:$("#userId").val(),
-        userName:$("#userName").val(),
-        uNickname:$("#nickName").val(),
+        nikeName:$("#nikeName").val(),
+        picGroupId:$("#picGroupId").val(),
         qryStartDate:$("#qryStartDate").val(),
         qryEndDate:$("#qryEndDate").val()
     }
-    
+
     layui.use('table', function () {
         var table = layui.table;
         var userId =
             table.render({
-                elem: '#accountInfo',
-                url: '../qryAccountInfo',
+                elem: '#commentInfo',
+                url: '../commentManager',
                 contentType: 'application/json',
                 method:"post",
                 title: '用户数据表',
@@ -31,44 +39,24 @@ function initTable() {
                         fixed: 'left',
                     },
                     {
-                        field: 'userName',
-                        title: '用户名',
+                        field: 'nikeName',
+                        title: '昵称',
                         width: 120
                     },
                     {
-                        field: 'uNickname',
-                        title: '用户昵称',
+                        field: 'picGroupId',
+                        title: '照片ID',
                         width: 120
                     },
                     {
-                        field: 'userPhone',
-                        title: '电话',
+                        field: 'commMain',
+                        title: '评论类容',
                         width: 120
                     },
                     {
-                        field: 'uAddress',
-                        title: '地址',
-                        width: 120
-                    },
-                    {
-                        field: 'uDis',
-                        title: '用户描述',
-                        width: 120
-                    },
-                    {
-                        field: 'uSex',
-                        title: '性别',
-                        width: 120
-                    },
-                    {
-                        field: 'uCreatetime',
-                        title: '创建时间',
-                        width: 120
-                    },
-                    {
-                        field: 'fansNum',
-                        title: '粉丝数',
-                        width: 120
+                        field: 'commDate',
+                        title: '评论类容',
+                        width: 300
                     },
                     {
                         title: '操作',
@@ -85,23 +73,18 @@ function initTable() {
             if (obj.event === 'ban') {
                 // ban
                 var banParam = {
-                    userId : data.userId
+                    commentId : data.commentId
                 }
                 $.ajax({
-                    url:"../banAccount", type:"post", data:JSON.stringify(banParam) , async:false, dataType:"json",contentType:"application/json", cache:false,
+                    url:"../banComment", type:"post", data:JSON.stringify(banParam) , async:false, dataType:"json",contentType:"application/json", cache:false,
                     success: function (data) {
-                       if(data.code = 0){
-                           debugger;
-                           layer.msg(data.msg);
-                       }
+                        if(data.code = 0){
+                            debugger;
+                            layer.msg(data.msg);
+                        }
                     }
                 });
             }
         });
     });
-}
-function qry() {
-    $("#qry").on("click",function () {
-        initTable();
-    })
 }

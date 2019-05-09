@@ -22,19 +22,19 @@
             <a href="javascript:;">默认展开</a>
             <dl class="layui-nav-child">
                 <dd>
-                    <a data-url="${pageContext.request.contextPath }/html/accountManager" data-title="account" data-id="1" href="#" class="site-demo-active"
+                    <a data-url="${pageContext.request.contextPath }/html/accountManager" data-title="账号管理" data-id="1" href="#" class="site-demo-active"
                        data-type="tabAdd">账号管理</a>
                 </dd>
                 <dd>
-                    <a data-url="${pageContext.request.contextPath }/html/commetManager" data-title="comment" data-id="2" href="#" class="site-demo-active"
+                    <a data-url="${pageContext.request.contextPath }/html/commetManager" data-title="评论管理" data-id="2" href="#" class="site-demo-active"
                        data-type="tabAdd">评论管理</a>
                 </dd>
                 <dd>
-                    <a data-url="${pageContext.request.contextPath }/html/likeManager" data-title="like" data-id="3" href="#" class="site-demo-active"
+                    <a data-url="${pageContext.request.contextPath }/html/likeManager" data-title="关注管理" data-id="3" href="#" class="site-demo-active"
                        data-type="tabAdd">关注管理</a>
                 </dd>
                 <dd>
-                    <a data-url="${pageContext.request.contextPath }/html/picManager" data-title="pic" data-id="4" href="#" class="site-demo-active"
+                    <a data-url="${pageContext.request.contextPath }/html/picManager" data-title="图片管理" data-id="4" href="#" class="site-demo-active"
                        data-type="tabAdd">图片管理</a>
                 </dd>
             </dl>
