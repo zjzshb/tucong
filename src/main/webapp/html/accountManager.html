@@ -11,10 +11,9 @@
             src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript"
             src="/js/accountManager.js"></script>
-    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
 <body>
-<form class="layui-form" action="">
+
 
     <div class="layui-form-item layui-inline">
         <label class="layui-form-label">用户ID</label>
@@ -43,21 +42,20 @@
 
     <div class="layui-form-item">
         <label class="layui-form-label">创建时间</label>
-        <div class="layui-input-inline" style="width: 100px;">
-            <input type="text" id="qryStartDate" class="layui-input" id="fromTime" placeholder="起始时间" name="fromTime">
+        <div class="layui-input-inline" style="width: 200px;">
+            <input type="date" id="qryStartDate" class="layui-input" id="fromTime" placeholder="起始时间" name="fromTime">
         </div>
         <div class="layui-form-mid">-</div>
-        <div class="layui-input-inline" style="width: 100px;">
-            <input type="text" id="qryEndDate" class="layui-input" id="toTime" placeholder="结束时间" name="toTime">
+        <div class="layui-input-inline" style="width: 200px;">
+            <input type="date" id="qryEndDate" class="layui-input" id="toTime" placeholder="结束时间" name="toTime">
         </div>
     </div>
 
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" >查询</button>
+            <button class="layui-btn"  id = 'qry'>查询</button>
         </div>
     </div>
-</form>
 <table class="layui-hide" id="accountInfo" lay-filter="test"></table>
 
 <script type="text/html" id="toolbarDemo">

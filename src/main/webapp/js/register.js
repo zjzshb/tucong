@@ -19,7 +19,7 @@ function sendMessge() {
         type : "post",
         dataType:'json',
         success : function(reslut) {
-            $("#messege04").text(reslut.resultMessage);
+            alert(reslut.resultMessage);
         }
     })
 
@@ -38,7 +38,7 @@ function doRegister() {
         type : "post",
         dataType:'json',
         success : function(reslut) {
-            $("#messege02").text(reslut.resultMessage);
+            alert(reslut.resultMessage);
         }
     })
 }

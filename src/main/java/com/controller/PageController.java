@@ -1,9 +1,14 @@
 package com.controller;
 
+import com.bo.UserInfoDetail;
+import com.service.interfaces.AccountService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by John on 2019/4/13.
@@ -11,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PageController {
     private static Logger log= LoggerFactory.getLogger(DemoController.class);
-
+    @Autowired
+    private AccountService accountService;
     @RequestMapping("")
     public String goIndex () {
         return "index";
@@ -22,7 +28,7 @@ public class PageController {
     }
     @RequestMapping("goRegister")
     public String goRegister (){
-        return "register";
+        return "register2";
     }
     @RequestMapping("gophotoupload")
     public String goUpLoad(){
@@ -33,7 +39,19 @@ public class PageController {
         return "showphoto";
     }
     @RequestMapping("manager")
-    public String manager(){
-        return "manager";
+    public String manager(HttpSession session){
+        Integer userId = (Integer) session.getAttribute("userId");
+        if(userId == null){
+            return "redirect:/";
+        }
+        try {
+            UserInfoDetail result = accountService.qryUserInfoDetail(userId);
+            if(result.getUserRoot()==1){
+                return "manager";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "redirect:/";
     }
 }

@@ -7,9 +7,11 @@ import com.bo.UserInfoDetail;
 import com.dao.AccountMapper;
 import com.dao.UserInfoMapper;
 import com.service.interfaces.AccountService;
+import com.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -57,6 +59,7 @@ public class AccountServiceImpl implements AccountService {
         //插入userInfo
         UserInfo userInfo = new UserInfo();
         userInfo.setUserId(userId);
+        userInfo.setuCreatetime(DateUtils.getNowDate());
         userInfoMapper.insert(userInfo);
     }
 
@@ -89,6 +92,11 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public List<UserInfoDetail> qryUser(UserInfoDetail userInfoDetail) throws Exception {
         return accountMapper.qryUserInfoDetail(userInfoDetail);
+    }
+
+    @Override
+    public Integer qryUserCount(UserInfoDetail userInfoDetail) throws Exception {
+        return accountMapper.qryUserInfoDetailCount(userInfoDetail);
     }
 
     @Override

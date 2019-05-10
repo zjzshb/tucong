@@ -11,5 +11,9 @@ import java.util.List;
 public interface CommentService {
     public List<QryCommentBean> QryCommentByCondition(QryCommentBean qryCommentBean)throws Exception;
 
+    public void banComment(QryCommentBean qryCommentBean)throws Exception;
+
+    public Integer QryCommentByConditionCount(QryCommentBean qryCommentBean)throws Exception;
+
     public PicCommentRel insetComment(PicCommentRel picCommentRel) throws  Exception;
 }

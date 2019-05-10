@@ -6,6 +6,7 @@ import com.bo.UserInfoDetail;
 import com.bo.UserRegisterReq;
 import com.miaodiyun.httpApiDemo.IndustrySMS;
 import com.service.interfaces.AccountService;
+import com.utils.DateUtils;
 import com.vo.BaseResponse;
 import com.vo.LayuiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.xml.registry.infomodel.User;
 
 import java.util.List;
 
@@ -38,7 +40,6 @@ public class AccountController {
     private ModelAndView doLogin(HttpServletRequest request){
         ModelAndView  mv = new ModelAndView();
         try {
-            mv.setViewName("redirect:/");
             Account account = new Account();
             account.setUserName(request.getParameter("userName"));
             account.setUserPwd(request.getParameter("userPwd"));
@@ -49,11 +50,17 @@ public class AccountController {
                 mv.addObject("messege","账号或密码错误");
             }
 
-            String nickName = accountService.queryUserInfoById(userId).getuNickname();
+            UserInfoDetail result = accountService.qryUserInfoDetail(userId);
 
             HttpSession session = request.getSession();
             session.setAttribute("userId" ,userId );
-            session.setAttribute("userNickName" ,nickName );
+            session.setAttribute("userNickName" ,result.getuNickname());
+            session.setAttribute("root",result.getUserRoot());
+            if (result.getUserRoot() == 1){
+                mv.setViewName("manager");
+            }else {
+                mv.setViewName("redirect:/");
+            }
 
         }catch (Exception e){
             mv.setViewName("login");
@@ -61,6 +68,9 @@ public class AccountController {
         }
         return mv;
     }
+
+
+
     @RequestMapping(value = "/quitLogin")
     private ModelAndView quitLogin(HttpSession session){
         session.removeAttribute("userId");
@@ -142,7 +152,7 @@ public class AccountController {
 
     @RequestMapping(value = "gerUserInfo" ,method = RequestMethod.POST)
     @ResponseBody
-    private BaseResponse<UserInfoDetail> gerUserInfo(HttpSession session){
+    private BaseResponse<UserInfoDetail> gerUerInfo(HttpSession session){
         BaseResponse response = new BaseResponse(true,BUSI_SUCCESS_CODE,BUSI_SUCCESS_MESSAGE);
         Integer userId = (Integer) session.getAttribute("userId");
         try {
@@ -160,10 +170,13 @@ public class AccountController {
     @ResponseBody
     private LayuiResponse<UserInfoDetail> qryAccountInfo(@RequestBody UserInfoDetail userInfoDetail){
         LayuiResponse response = new LayuiResponse(0,"成功");
+
         try {
-           List<UserInfoDetail>  result = accountService.qryUser(userInfoDetail);
+            this.setCondition(userInfoDetail);
+            List<UserInfoDetail>  result = accountService.qryUser(userInfoDetail);
+            Integer count = accountService.qryUserCount(userInfoDetail);
             response.setData(result);
-            response.setCount(100);
+            response.setCount(count);
         } catch (Exception e) {
             response.setCode(999);
             response.setMsg("失败");
@@ -191,5 +204,10 @@ public class AccountController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("userInfo");
         return mv;
+    }
+    private void setCondition( UserInfoDetail userInfoDetail)throws Exception{
+        userInfoDetail.setPage(userInfoDetail.getPage()-1);
+        userInfoDetail.setStart(userInfoDetail.getPage()*userInfoDetail.getLimit());
+        userInfoDetail.setEnd(userInfoDetail.getPage()*userInfoDetail.getLimit()+userInfoDetail.getLimit());
     }
 }

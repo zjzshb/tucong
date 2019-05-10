@@ -22,6 +22,18 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    public void banComment(QryCommentBean qryCommentBean) throws Exception {
+        PicCommentRel result = picCommentRelMapper.selectByPrimaryKey(qryCommentBean.getCommentId());
+        result.setCommState("0");
+        picCommentRelMapper.updateByPrimaryKey(result);
+    }
+
+    @Override
+    public Integer QryCommentByConditionCount(QryCommentBean qryCommentBean) throws Exception {
+        return picCommentRelMapper.qryCommentByConditionCount(qryCommentBean);
+    }
+
+    @Override
     public PicCommentRel insetComment(PicCommentRel picCommentRel) throws Exception {
 
          picCommentRelMapper.insert(picCommentRel);

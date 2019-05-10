@@ -101,6 +101,7 @@ function qryPhoto() {
 }
 function photoClick() {
     $(".photo").on("click",function () {
-        window.location ="PhotoDtail?picGourpId="+$(this).attr("id");
+        // window.location ="PhotoDtail?picGourpId="+$(this).attr("id");
+        window.open("PhotoDtail?picGourpId="+$(this).attr("id"));
     })
 }

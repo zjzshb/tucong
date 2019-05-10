@@ -67,6 +67,13 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     @Override
+    public Integer qryPhotoByConditionCount(QryPhotoBean qryPhotoBean) throws Exception {
+        qryPhotoBean.setPicGroupState("1");
+       return picInfoMapper.qryPhotoByConditionCount(qryPhotoBean);
+
+    }
+
+    @Override
     public QryPhotoDetailBean qryPhotoDetailByCondition(QryPhotoDetailBean qryPhotoDetailBean) throws Exception {
         QryPhotoDetailBean result = picInfoMapper.qryPhotoDetailByCondition(qryPhotoDetailBean);
 
@@ -90,6 +97,13 @@ public class PhotoServiceImpl implements PhotoService {
 
 
         return result;
+    }
+
+    @Override
+    public void banPic(Integer groupId) throws Exception {
+        PicGroupInfo result = picGroupInfoMapper.selectByPrimaryKey(groupId);
+        result.setPicGroupState("0");
+        picGroupInfoMapper.updateByPrimaryKey(result);
     }
 
 

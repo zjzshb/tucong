@@ -36,4 +36,6 @@ public interface AccountMapper {
 
     List<UserInfoDetail> qryUserInfoDetail(UserInfoDetail userInfoDetail);
 
+    int qryUserInfoDetailCount(UserInfoDetail userInfoDetail);
+
 }

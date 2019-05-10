@@ -294,34 +294,118 @@ FROM
 	) a
 
       WHERE 1=1
-      <if test="picTitle != null">
+      <if test="picTitle != null and picTitle!=''">
           and picTitle = #{picTitle,jdbcType=VARCHAR}
       </if>
-      <if test="userId != null">
+      <if test="userId != null and userId !=0">
           and userId = #{userId,jdbcType=INTEGER}
       </if>
-      <if test="picLabelName != null">
+    <if test="picGroupId != null and picGroupId !=0">
+      and picGroupId = #{picGroupId,jdbcType=INTEGER}
+    </if>
+      <if test="picLabelName != null and picLabelName !=''">
           and picLabelName = #{picLabelName,jdbcType=VARCHAR}
       </if>
-    <if test="picLabelId != null">
+    <if test="picLabelId != null and picLabelId != 0">
       and picLabelId = #{picLabelId,jdbcType=INTEGER}
     </if>
-    <if test="qryStartDate != null">
+    <if test="qryStartDate != null and qryStartDate!=''">
       and picUpDate &gt;= #{qryStartDate,jdbcType=VARCHAR}
     </if>
 
-    <if test="qryEndDate != null">
+    <if test="qryEndDate != null and qryEndDate !=''">
       and picUpDate &lt;= #{qryEndDate,jdbcType=VARCHAR}
     </if>
-    <if test="picGroupState != null">
+    <if test="picGroupState != null and picGroupState != ''">
       and picGroupState = #{picGroupState,jdbcType=VARCHAR}
     </if>
 
-    <if test="start != null and end !=null " >
-      LIMIT #{start,jdbcType=INTEGER} ,#{end,jdbcType=INTEGER};
+    <if test="start != null and limit !=null " >
+      LIMIT #{start,jdbcType=INTEGER} ,#{limit,jdbcType=INTEGER};
     </if>
 
 
+
+  </select>
+  
+  <select id="qryPhotoByConditionCount" parameterType="com.bo.QryPhotoBean"  resultType="java.lang.Integer">
+    SELECT
+    count(*) as count
+    FROM
+    (
+    SELECT
+    g.PIC_DESCRIBE as picDescribe,
+    g.PIC_GROUP_ID as picGroupId,
+    g.PIC_GROUP_STATE as  picGroupState,
+    g.PIC_TITLE as picTitle,
+    g.PIC_UP_DATE as picUpDate,
+    g.USER_ID as userId,
+    li.PIC_LABEL_NAME as picLabelName,
+    li.PIC_LABEL_ID as picLabelId,
+    u.U_NICKNAME as uNickname,
+    (
+    SELECT
+    COUNT(*)
+    FROM
+    PIC_COMMENT_REL AS c
+    WHERE
+    c.PIC_GROUP_ID = g.PIC_GROUP_ID
+    and c.COMM_STATE = '1'
+    ) AS commentNum,
+    (
+    SELECT
+    COUNT(*)
+    FROM
+    PIC_LIKE_REL AS l
+    WHERE
+    l.PIC_ID = g.PIC_GROUP_ID
+    ) AS likeNum,
+    (
+    SELECT
+    PIC_INFO.PIC_ADDRESS
+    FROM
+    PIC_GROUP_INFO,
+    PIC_INFO
+    WHERE
+    g.PIC_GROUP_ID = PIC_INFO.PIC_GROUP_ID LIMIT 0,1
+    ) AS picAdress
+    FROM
+    PIC_GROUP_INFO AS g,
+    PIC_LABEL_INFO AS li,
+    PIC_LABEL_REL AS lr,
+    USER_INFO as u
+    WHERE
+    g.PIC_GROUP_ID = lr.PIC_GROUP_ID
+    AND lr.PIC_LABEL_ID = li.PIC_LABEL_ID
+    AND u.USER_ID = g.USER_ID
+    ) a
+
+    WHERE 1=1
+    <if test="picTitle != null and picTitle != ''">
+      and picTitle = #{picTitle,jdbcType=VARCHAR}
+    </if>
+    <if test="userId != null and userId !=0 ">
+      and userId = #{userId,jdbcType=INTEGER}
+    </if>
+    <if test="picLabelName != null and picLabelName!=''">
+      and picLabelName = #{picLabelName,jdbcType=VARCHAR}
+    </if>
+    <if test="picLabelId != null and picLabelId !=0">
+      and picLabelId = #{picLabelId,jdbcType=INTEGER}
+    </if>
+    <if test="picGroupId != null and picGroupId !=0">
+      and picGroupId = #{picGroupId,jdbcType=INTEGER}
+    </if>
+    <if test="qryStartDate != null and qryStartDate!=''">
+      and picUpDate &gt;= #{qryStartDate,jdbcType=VARCHAR}
+    </if>
+
+    <if test="qryEndDate != null and  qryEndDate!=''">
+      and picUpDate &lt;= #{qryEndDate,jdbcType=VARCHAR}
+    </if>
+    <if test="picGroupState != null and picGroupState!=''">
+      and picGroupState = #{picGroupState,jdbcType=VARCHAR}
+    </if>
 
   </select>
 

@@ -35,9 +35,39 @@ public class UserInfoDetail {
 
     private String qryEndDate;
 
+    private Integer count;
+
     private Integer page;
 
     private Integer limit;
+
+    private Integer start;
+
+    private Integer end;
+
+    public Integer getStart() {
+        return start;
+    }
+
+    public void setStart(Integer start) {
+        this.start = start;
+    }
+
+    public Integer getEnd() {
+        return end;
+    }
+
+    public void setEnd(Integer end) {
+        this.end = end;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
 
     public Integer getPage() {
         return page;

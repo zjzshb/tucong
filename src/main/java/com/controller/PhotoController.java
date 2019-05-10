@@ -3,11 +3,13 @@ package com.controller;
 import com.bo.PicInfo;
 import com.bo.QryPhotoBean;
 import com.bo.QryPhotoDetailBean;
+import com.bo.UserInfoDetail;
 import com.service.interfaces.PhotoService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.utils.DateUtils;
 import com.utils.FastUtils;
 import com.vo.BaseResponse;
+import com.vo.LayuiResponse;
 import org.csource.common.MyException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -147,5 +149,43 @@ public class PhotoController {
             return response;
         }
         return response;
+    }
+    @ResponseBody
+    @RequestMapping(value = "/photoManager",method = RequestMethod.POST)
+    public LayuiResponse<List<QryPhotoBean>> photoManager(@RequestBody QryPhotoBean qryPhotoBean){
+        LayuiResponse response = new LayuiResponse(0,"成功");
+
+        try {
+            this.setCondition(qryPhotoBean);
+            List<QryPhotoBean> result = photoService.qryPhotoByCondition(qryPhotoBean);
+            Integer count = photoService.qryPhotoByConditionCount(qryPhotoBean);
+            response.setData(result);
+            response.setCount(count);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return response;
+    }
+
+    @RequestMapping(value = "banPic" ,method = RequestMethod.POST)
+    @ResponseBody
+    private LayuiResponse banPic(@RequestBody QryPhotoBean qryPhotoBean){
+        LayuiResponse response = new LayuiResponse(0,"封禁成功");
+        try {
+            photoService.banPic(qryPhotoBean.getPicGroupId());
+        } catch (Exception e) {
+            response.setCode(999);
+            response.setMsg("封禁失败");
+            return response;
+        }
+        return response;
+    }
+
+
+    private void setCondition(QryPhotoBean qryPhotoBean ){
+        qryPhotoBean.setPage(qryPhotoBean.getPage()-1);
+        qryPhotoBean.setStart(qryPhotoBean.getPage()*qryPhotoBean.getLimit());
+        qryPhotoBean.setEnd(qryPhotoBean.getPage()*qryPhotoBean.getLimit()+qryPhotoBean.getLimit());
     }
 }
